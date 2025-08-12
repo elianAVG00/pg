@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PGExporter": {
+      "commandName": "Project",
+      "commandLineArgs": "-conciliador"
+    }
+  }
+}

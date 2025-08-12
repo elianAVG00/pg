@@ -1,0 +1,1966 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" />
+  <xs:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetServicesByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServicesByUserResult" nillable="true" type="q1:ArrayOfServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemByPaymentClaimId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemByPaymentClaimIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCommerceItemByPaymentClaimIdResult" nillable="true" type="q2:ArrayOfCommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckIfTransactionIsComplete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckIfTransactionIsCompleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="CheckIfTransactionIsCompleteResult" nillable="true" type="q3:CheckTransaction" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguageByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguageByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetLanguageByCodeResult" nillable="true" type="q4:LanguageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionByValidatorTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validatorTransactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validatorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionByValidatorTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTransactionByValidatorTransactionIdResult" nillable="true" type="q5:TransactionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionValidatorData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+        <xs:element minOccurs="0" name="validatorTransactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="internalNumber" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionValidatorDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateTransactionValidatorDataResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="appVersion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAppVersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveNewBuild">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tfschange" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveNewBuildResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveNewBuildResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNATransactions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="desde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="hasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNATransactionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetNATransactionsResult" nillable="true" type="q6:ArrayOfTransactionValidatorNumber" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionSyncByJob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionNumber" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionSyncByJobResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionCloseByTimeOut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionCloseByTimeOutResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRenditionInformation">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRenditionInformationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetRenditionInformationResult" nillable="true" type="q7:ArrayOfReporteRenditionExportModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserWorkWithPaymentClaimByPaymentClaimNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="claimnumber" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserWorkWithPaymentClaimByPaymentClaimNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanUserWorkWithPaymentClaimByPaymentClaimNumberResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicket_Payment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="lang" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicket_PaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTicket_PaymentResult" nillable="true" type="q8:ArrayOfTicketsModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MapOriginalCodeFromValidatorToPGCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="originalCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleTypeFrom" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleTypeTo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validatorFrom" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MapOriginalCodeFromValidatorToPGCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MapOriginalCodeFromValidatorToPGCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidationResponseByStatusCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="language" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidationResponseByStatusCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetValidationResponseByStatusCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserAccessToService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserAccessToServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanUserAccessToServiceResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserGetMerchantInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserGetMerchantInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanUserGetMerchantInfoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserGetTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CanUserGetTransactionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CanUserGetTransactionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivePaymentClaimByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivePaymentClaimByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetActivePaymentClaimByTransactionIdResult" nillable="true" type="q9:PaymentClaimModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHTTPResponseByStatusCodeOrPGCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="StatusCodeOrPGCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="language" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHTTPResponseByStatusCodeOrPGCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetHTTPResponseByStatusCodeOrPGCodeResult" nillable="true" type="q10:HTTPResponse_Model" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnulmentResultInfoByPaymentClaimId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnulmentResultInfoByPaymentClaimIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAnnulmentResultInfoByPaymentClaimIdResult" nillable="true" type="q11:AnnulmentResultInfoModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnulmentValidatorCommById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="annulmentValidatorCommId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAnnulmentValidatorCommByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAnnulmentValidatorCommByIdResult" nillable="true" type="q12:AnnulmentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="setting" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAppConfigurationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentResultInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="ARIToSave" nillable="true" type="q13:AnnulmentResultInfoModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentResultInfoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllChannels">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllChannelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAllChannelsResult" nillable="true" type="q14:ArrayOfChannelModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPaymentClaimByStatusCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isAutomitized" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPaymentClaimByStatusCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAllPaymentClaimByStatusCodeResult" nillable="true" type="q15:ArrayOfPaymentClaimModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProducts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProductsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAllProductsResult" nillable="true" type="q16:ArrayOfProductModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllValidators">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllValidatorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAllValidatorsResult" nillable="true" type="q17:ArrayOfValidatorModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="key" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAppConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAppConfigResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCallback">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCallbackResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCallbackResult" nillable="true" type="q18:CallbackModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannelByName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="channelName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetChannelByNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetChannelByNameResult" nillable="true" type="q19:ChannelModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimerById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClaimerByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetClaimerByIdResult" nillable="true" type="q20:ClaimerModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClients">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetClientsResult" nillable="true" type="q21:ArrayOfClientModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienttById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="clientId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienttByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetClienttByIdResult" nillable="true" type="q22:ClientModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienttByShortName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClienttByShortNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetClienttByShortNameResult" nillable="true" type="q23:ClientModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurations">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetConfigurationsResult" nillable="true" type="q24:ArrayOfConfigurationModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrencies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrenciesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCurrenciesResult" nillable="true" type="q25:ArrayOfCurrencyModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrencyByIso">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="iso" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrencyByIsoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCurrencyByIsoResult" nillable="true" type="q26:CurrencyModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocTypeByShortName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shortName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocTypeByShortNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetDocTypeByShortNameResult" nillable="true" type="q27:DocTypeModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocTypeById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="shortName" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocTypeByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetDocTypeByIdResult" nillable="true" type="q28:DocTypeModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGenericCodeByStatusCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGenericCodeByStatusCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetGenericCodeByStatusCodeResult" nillable="true" type="q29:GenericCodeModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastPaymentClaimStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastPaymentClaimStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetLastPaymentClaimStatusResult" nillable="true" type="q30:StatusCodeStatusMessageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastPayment">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastPaymentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLastPaymentResult" nillable="true" type="q31:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeByStatusCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="moduleType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleValidator" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeByStatusCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetModuleCodeByStatusCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeOfPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeOfPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetModuleCodeOfPaymentClaimResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeOfTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetModuleCodeOfTransactionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetModuleCodeOfTransactionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimsByCriteria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="criteria" nillable="true" type="q32:FilterCriteriaModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimsByCriteriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetPaymentClaimsByCriteriaResult" nillable="true" type="q33:ArrayOfPaymentClaimModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimIdByNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimNumber" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimIdByNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPaymentClaimIdByNumberResult" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetPaymentClaimByIdResult" nillable="true" type="q34:PaymentClaimModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimsByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimsByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetPaymentClaimsByTransactionIdResult" nillable="true" type="q35:ArrayOfPaymentClaimModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimStatusHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPaymentClaimStatusHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetPaymentClaimStatusHistoryResult" nillable="true" type="q36:ArrayOfStatusCodeStatusMessageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetProductByIdResult" nillable="true" type="q37:ProductModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductIdOfValidator">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+        <xs:element minOccurs="0" name="validatorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductIdOfValidatorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProductIdOfValidatorResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsByService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductsByServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetProductsByServiceResult" nillable="true" type="q38:ArrayOfProductModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportRendition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CommerceItemCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RangoDesde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RangoHasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportRenditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetReportRenditionResult" nillable="true" type="q39:ArrayOfReporteRenditionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReport814">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CommerceItemCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RangoDesde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RangoHasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReport814Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetReport814Result" nillable="true" type="q40:ArrayOfReporteCentralizadorModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportRenditionRefunds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CommerceItemCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RangoDesde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RangoHasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportRenditionRefundsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetReportRenditionRefundsResult" nillable="true" type="q41:ArrayOfReporteCentralizadorOrRefundionRefundModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReport814Refunds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CommerceItemCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RangoDesde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RangoHasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReport814RefundsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetReport814RefundsResult" nillable="true" type="q42:ArrayOfReporteCentralizadorOrRefundionRefundModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportConciliation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CommerceItemCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RangoDesde" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="RangoHasta" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportConciliationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetReportConciliationResult" nillable="true" type="q43:ArrayOfReporteConciliacionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRolesByUsername">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRolesByUsernameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetRolesByUsernameResult" nillable="true" type="q44:ArrayOfRolModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServiceByIdResult" nillable="true" type="q45:ServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceByMerchantId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="merchantId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceByMerchantIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServiceByMerchantIdResult" nillable="true" type="q46:ServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServiceByTransactionIdResult" nillable="true" type="q47:ServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServices">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServicesResult" nillable="true" type="q48:ArrayOfServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetStatusResult" nillable="true" type="q49:AppInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusCodeByOriginalCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="originalCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validator" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusCodeByOriginalCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetStatusCodeByOriginalCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusCodeOfPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusCodeOfPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetStatusCodeOfPaymentClaimResult" nillable="true" type="q50:StatusCodeModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetStatusMessageByPaymentClaimResult" nillable="true" type="q51:StatusMessageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByOriginalCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="moduleType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="paymentGatewayCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="languageCodeISO6391" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByOriginalCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetStatusMessageByOriginalCodeResult" nillable="true" type="q52:StatusResponseMessageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByStatusCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="languageCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStatusMessageByStatusCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetStatusMessageByStatusCodeResult" nillable="true" type="q53:StatusResponseMessageModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicket_PaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="claimNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="lang" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicket_PaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTicket_PaymentClaimResult" nillable="true" type="q54:ArrayOfTicketModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idTransaction" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTransactionByIdResult" nillable="true" type="q55:TransactionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionsByElectronicPaymentCodeAndMerchantId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="electronicPaymentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serviceId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionsByElectronicPaymentCodeAndMerchantIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTransactionsByElectronicPaymentCodeAndMerchantIdResult" nillable="true" type="q56:ArrayOfTransactionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isDuplicatedElectronicPaymentCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="electronicPaymentCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="isDuplicatedElectronicPaymentCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isDuplicatedElectronicPaymentCodeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTransactionByTransactionIdResult" nillable="true" type="q57:TransactionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionPKByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionPKByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTransactionPKByTransactionIdResult" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+        <xs:element minOccurs="0" name="language" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTransactionResultResult" nillable="true" type="q58:TransactionCompletedInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicketInformationToRePrint">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PurchaseDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="ExternalId" type="xs:int" />
+        <xs:element minOccurs="0" name="CreditCard4LastDigits" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthorizationCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTicketInformationToRePrintResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetTicketInformationToRePrintResult" nillable="true" type="q59:ArrayOfRePrintModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUniqueCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="channelId" type="xs:int" />
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUniqueCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUniqueCodeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetUserResult" nillable="true" type="q60:UserModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByUsername">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserByUsernameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetUserByUsernameResult" nillable="true" type="q61:UserModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validatorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetValidatorByIdResult" nillable="true" type="q62:ValidatorModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorConfigByServiceId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="validatorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorConfigByServiceIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetValidatorConfigByServiceIdResult" nillable="true" type="q63:ValidatorServiceConfigModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorFromConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="channelId" type="xs:int" />
+        <xs:element minOccurs="0" name="productId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorFromConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetValidatorFromConfigurationResult" nillable="true" type="q64:ValidatorModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="annulmentRequest" nillable="true" type="q65:AnnulmentRequestModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertAnnulmentRequestResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentValidatorComm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="annulmentValidatorCommModel" nillable="true" type="q66:AnnulmentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertAnnulmentValidatorCommResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertAnnulmentValidatorCommResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="configuration" nillable="true" type="q67:ConfigurationModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="log" nillable="true" type="q68:LogModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveLogResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNotificationConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="templateName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNotificationConfigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertNotificationConfigResult" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNotificationLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="notificationLog" nillable="true" type="q69:NotificationLogModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertNotificationLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertNotificationLogResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="paymentClaim" nillable="true" type="q70:PaymentClaimModel" />
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="claimer" nillable="true" type="q71:ClaimerModel" />
+        <xs:element minOccurs="0" name="moduleCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="currentUser" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertPaymentClaimResult" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTransactionResultInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="transactionResultInformation" nillable="true" type="q72:TransactionResultInfoModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertTransactionResultInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertTransactionResultInfoResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentClaimLocked">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentClaimLockedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsPaymentClaimLockedResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsTransactionInTRIByTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsTransactionInTRIByTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsTransactionInTRIByTransactionIdResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsTransactionInTRIByTransactionIdPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsTransactionInTRIByTransactionIdPKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsTransactionInTRIByTransactionIdPKResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LockPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LockPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LockPaymentClaimResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertPaymentValidatorComm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="paymentValidatorComm" nillable="true" type="q73:PaymentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertPaymentValidatorCommResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertPaymentValidatorCommResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginUserResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="configurationId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="transaction" nillable="true" type="q74:TransactionModel" />
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="commerceItems" nillable="true" type="q75:ArrayOfCommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveTransactionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveTransactionResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendNotification">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPk" type="xs:long" />
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleDescription" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element xmlns:q76="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ticketModel" nillable="true" type="q76:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="finalUserMails" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SendNotification" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sentBySync" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendNotificationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendNotificationResult" nillable="true" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="basicMail" nillable="true" type="q77:MailerModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendEmailResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetAppConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="setting" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newvalue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetAppConfigurationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetTicketToPaymentClaimStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="statusCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ticketNumber" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetTicketToPaymentClaimStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDAS">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDASResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestDASResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBDelete">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBDeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestDBDeleteResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBInsert">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBInsertResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestDBInsertResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBSelect">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBSelectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestDBSelectResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestSMTP">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestSMTPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestSMTPResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBUpdate">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestDBUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestDBUpdateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnLockPaymentClaim">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnLockPaymentClaimResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UnLockPaymentClaimResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnnulmentRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="annulmentRequest" nillable="true" type="q78:AnnulmentRequestModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnnulmentRequestResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnnulmentValidatorComm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="annulmentValidatorCommModel" nillable="true" type="q79:AnnulmentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAnnulmentValidatorCommResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="client" nillable="true" type="q80:ClientModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateClientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentClaimStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="paymentClaimId" type="xs:long" />
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="moduleCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="observations" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentClaimStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentValidatorComm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="paymentValidatorComm" nillable="true" type="q81:PaymentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentValidatorCommResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentValidatorCommByIdTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="paymentValidatorComm" nillable="true" type="q82:PaymentValidatorCommModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePaymentValidatorCommByIdTransactionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="service" nillable="true" type="q83:ServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="transaction" nillable="true" type="q84:TransactionModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+        <xs:element minOccurs="0" name="transactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionIdResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+        <xs:element minOccurs="0" name="originalCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="typeMethod" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="validator" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransactionStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateJobRunLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="jobToUpdate" nillable="true" type="q85:JobLogModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateJobRunLogResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertJobRunLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="jobToInsert" nillable="true" type="q86:JobLogModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertJobRunLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertJobRunLogResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentOffline">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPaymentOfflineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsPaymentOfflineResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsServiceOffline">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsServiceOfflineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsServiceOfflineResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsJobConsoleTaskOffline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="task" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsJobConsoleTaskOfflineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsJobConsoleTaskOfflineResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllConfigs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllConfigsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetAllConfigsResult" nillable="true" type="q87:ArrayOfAppConfigModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertReportJobRunLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CommerceItemId" nillable="true" type="q88:ArrayOflong" />
+        <xs:element minOccurs="0" name="JobRunLog" type="xs:int" />
+        <xs:element minOccurs="0" name="ReportType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertReportJobRunLogResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertRefundJobRunLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CommerceItemId" nillable="true" type="q89:ArrayOflong" />
+        <xs:element minOccurs="0" name="JobRunLog" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertRefundJobRunLogResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommerceItemCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="oldCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommerceItemCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateCommerceItemCodeResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceConfigByServiceId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServiceConfigByServiceIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetServiceConfigByServiceIdResult" nillable="true" type="q90:ServiceConfigModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorByCode">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="validatorCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetValidatorByCodeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetValidatorByCodeResult" nillable="true" type="q91:ValidatorModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCommerceItemByIdResult" nillable="true" type="q92:CommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommerceItemState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+        <xs:element minOccurs="0" name="state" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommerceItemStateResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemsToClaimByTransactionIdPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemsToClaimByTransactionIdPKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCommerceItemsToClaimByTransactionIdPKResult" nillable="true" type="q93:ArrayOfCommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemsClaimedByTransactionIdPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemsClaimedByTransactionIdPKResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExistClaimForCommerceItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="commerceItem" nillable="true" type="q94:CommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExistClaimForCommerceItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExistClaimForCommerceItemResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemNotAnnulledByTransactionIdPK">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="transactionIdPK" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommerceItemNotAnnulledByTransactionIdPKResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="GetCommerceItemNotAnnulledByTransactionIdPKResult" nillable="true" type="q95:ArrayOfCommerceItemModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" minOccurs="0" name="client" nillable="true" type="q96:ClientModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertClientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

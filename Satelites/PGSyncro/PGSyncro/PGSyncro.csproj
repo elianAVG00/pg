@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F905D14F-8994-410C-B992-3E821032727C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PGSyncro</RootNamespace>
+    <AssemblyName>PGSyncro</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.13.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.13.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EFData\AppConfig.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\CodeMapping.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GenericCode.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\GetTransactionsToSync_Result.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\Log.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\Module.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\ModuleCode.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\MonitorSyncroProcess.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\MonitorSyncroProcessRecord.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\PGDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\PGDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\PGDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\StatusCode.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\TransactionResultInfo.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\TransactionStatu.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFData\ValidatorServiceConfig.cs">
+      <DependentUpon>PGDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NPSModel.cs" />
+    <Compile Include="Models\PGModels.cs" />
+    <Compile Include="Models\SPSModels.cs" />
+    <Compile Include="Models\SyncroModel.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SyncroTransaction.cs" />
+    <Compile Include="Utils\NetworkTools.cs" />
+    <Compile Include="Utils\PGConfiguration.cs" />
+    <Compile Include="Utils\ConversionTools.cs" />
+    <Compile Include="Utils\Sender.cs" />
+    <Compile Include="Utils\TransactionRepository.cs" />
+    <Compile Include="Validators\NPSCall.cs" />
+    <Compile Include="Validators\SPSCalls.cs" />
+    <Compile Include="Web References\NPS_ServiceReference_PROD\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EFData\PGDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PGDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFData\PGDataModel.edmx.diagram">
+      <DependentUpon>PGDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_Authorize_2p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_Authorize_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_BankPayment_2p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_BankPayment_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_Capture.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CashPayment_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_ChangeSecretKey.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CreateClientSession.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CreateCustomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CreatePaymentMethod.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CreatePaymentMethodFromPayment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_CreatePaymentMethodToken.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_DeleteCustomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_DeletePaymentMethod.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_FraudScreening.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_GetIINDetails.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_GetInstallmentsOptions.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_NotifyFraudScreeningReview.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_PayOnLine_2p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_PayOnLine_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_QueryCardDetails.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_QueryCardNumber.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_QueryTxs.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_RecachePaymentMethodToken.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_Refund.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_RetrieveCustomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_RetrievePaymentMethod.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_RetrievePaymentMethodToken.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_SimpleQueryTx.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_SplitAuthorize_2p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_SplitAuthorize_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_SplitPayOnLine_2p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_SplitPayOnLine_3p.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_UpdateCustomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\RespuestaStruct_UpdatePaymentMethod.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\NPS_ServiceReference_PROD\ws.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EFData\PGDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDataModel.edmx</DependentUpon>
+      <LastGenOutput>PGDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFData\PGDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDataModel.edmx</DependentUpon>
+      <LastGenOutput>PGDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://services2.nps.com.ar/ws.php%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NPS_ServiceReference_PROD\</RelPath>
+      <UpdateFromURL>https://services2.nps.com.ar/ws.php%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PGSyncro_NPS_ServiceReference_PROD_PaymentServicePlatform</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

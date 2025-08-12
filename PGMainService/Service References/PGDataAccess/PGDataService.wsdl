@@ -1,0 +1,2707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PGDataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IPGDataService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PGDataAccess.Models" />
+      <xsd:import schemaLocation="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPGDataService_GetServicesByUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicesByUser" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServicesByUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicesByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemByPaymentClaimId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemByPaymentClaimId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemByPaymentClaimId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemByPaymentClaimIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CheckIfTransactionIsComplete_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIfTransactionIsComplete" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CheckIfTransactionIsComplete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckIfTransactionIsCompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLanguageByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguageByCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLanguageByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguageByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionByValidatorTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionByValidatorTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionByValidatorTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionByValidatorTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionValidatorData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionValidatorData" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionValidatorData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionValidatorDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppVersion" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveNewBuild_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNewBuild" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveNewBuild_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveNewBuildResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetNATransactions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNATransactions" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetNATransactions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNATransactionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionSyncByJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionSyncByJob" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionSyncByJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionSyncByJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionCloseByTimeOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionCloseByTimeOut" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionCloseByTimeOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionCloseByTimeOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetRenditionInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRenditionInformation" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetRenditionInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRenditionInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserWorkWithPaymentClaimByPaymentClaimNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserWorkWithPaymentClaimByPaymentClaimNumber" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserWorkWithPaymentClaimByPaymentClaimNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserWorkWithPaymentClaimByPaymentClaimNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicket_Payment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicket_Payment" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicket_Payment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicket_PaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_MapOriginalCodeFromValidatorToPGCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:MapOriginalCodeFromValidatorToPGCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_MapOriginalCodeFromValidatorToPGCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MapOriginalCodeFromValidatorToPGCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidationResponseByStatusCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidationResponseByStatusCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidationResponseByStatusCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidationResponseByStatusCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserAccessToService_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserAccessToService" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserAccessToService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserAccessToServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserGetMerchantInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserGetMerchantInfo" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserGetMerchantInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserGetMerchantInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserGetTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserGetTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_CanUserGetTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanUserGetTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetActivePaymentClaimByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivePaymentClaimByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetActivePaymentClaimByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivePaymentClaimByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetHTTPResponseByStatusCodeOrPGCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHTTPResponseByStatusCodeOrPGCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetHTTPResponseByStatusCodeOrPGCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHTTPResponseByStatusCodeOrPGCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAnnulmentResultInfoByPaymentClaimId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnulmentResultInfoByPaymentClaimId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAnnulmentResultInfoByPaymentClaimId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnulmentResultInfoByPaymentClaimIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAnnulmentValidatorCommById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnulmentValidatorCommById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAnnulmentValidatorCommById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAnnulmentValidatorCommByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentResultInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentResultInfo" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentResultInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentResultInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllChannels_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllChannels" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllChannels_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllPaymentClaimByStatusCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPaymentClaimByStatusCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllPaymentClaimByStatusCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllPaymentClaimByStatusCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProducts" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllValidators_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllValidators" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllValidators_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllValidatorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfig" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAppConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAppConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCallback_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCallback" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCallback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCallbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetChannelByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelByName" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetChannelByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChannelByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClaimerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimerById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClaimerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClaimerByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClients_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClients" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClients_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClientsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClienttById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienttById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClienttById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienttByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClienttByShortName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienttByShortName" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetClienttByShortName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetClienttByShortNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetConfigurations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigurations" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetConfigurations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigurationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCurrencies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencies" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCurrencies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrenciesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCurrencyByIso_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyByIso" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCurrencyByIso_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrencyByIsoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetDocTypeByShortName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypeByShortName" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetDocTypeByShortName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypeByShortNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetDocTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetDocTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetGenericCodeByStatusCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericCodeByStatusCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetGenericCodeByStatusCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGenericCodeByStatusCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLastPaymentClaimStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastPaymentClaimStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLastPaymentClaimStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastPaymentClaimStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLastPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetLastPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeByStatusCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeByStatusCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeByStatusCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeByStatusCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeOfPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeOfPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeOfPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeOfPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeOfTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeOfTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetModuleCodeOfTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModuleCodeOfTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimsByCriteria_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimsByCriteria" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimsByCriteria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimsByCriteriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimIdByNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimIdByNumber" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimIdByNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimIdByNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimsByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimsByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimsByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimsByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimStatusHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimStatusHistory" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetPaymentClaimStatusHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentClaimStatusHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductIdOfValidator_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductIdOfValidator" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductIdOfValidator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductIdOfValidatorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductsByService_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByService" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetProductsByService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsByServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportRendition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportRendition" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportRendition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportRenditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReport814_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport814" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReport814_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport814Response" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportRenditionRefunds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportRenditionRefunds" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportRenditionRefunds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportRenditionRefundsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReport814Refunds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport814Refunds" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReport814Refunds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReport814RefundsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportConciliation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportConciliation" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetReportConciliation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReportConciliationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetRolesByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetRolesByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceByMerchantId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByMerchantId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceByMerchantId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByMerchantIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServices" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServicesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusCodeByOriginalCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusCodeByOriginalCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusCodeByOriginalCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusCodeByOriginalCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusCodeOfPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusCodeOfPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusCodeOfPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusCodeOfPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByOriginalCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByOriginalCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByOriginalCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByOriginalCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByStatusCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByStatusCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetStatusMessageByStatusCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusMessageByStatusCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicket_PaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicket_PaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicket_PaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicket_PaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionsByElectronicPaymentCodeAndMerchantId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionsByElectronicPaymentCodeAndMerchantId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionsByElectronicPaymentCodeAndMerchantId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionsByElectronicPaymentCodeAndMerchantIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_isDuplicatedElectronicPaymentCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:isDuplicatedElectronicPaymentCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_isDuplicatedElectronicPaymentCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:isDuplicatedElectronicPaymentCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionPKByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionPKByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionPKByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionPKByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionResult" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTransactionResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicketInformationToRePrint_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicketInformationToRePrint" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetTicketInformationToRePrint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicketInformationToRePrintResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUniqueCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniqueCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUniqueCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUniqueCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUserByUsername_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUsername" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetUserByUsername_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorConfigByServiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorConfigByServiceId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorConfigByServiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorConfigByServiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorFromConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorFromConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorFromConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorFromConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentRequest" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentValidatorComm_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentValidatorComm" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertAnnulmentValidatorComm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAnnulmentValidatorCommResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertNotificationConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNotificationConfig" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertNotificationConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNotificationConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertNotificationLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNotificationLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertNotificationLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertNotificationLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertTransactionResultInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTransactionResultInfo" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertTransactionResultInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertTransactionResultInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsPaymentClaimLocked_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPaymentClaimLocked" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsPaymentClaimLocked_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPaymentClaimLockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsTransactionInTRIByTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsTransactionInTRIByTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsTransactionInTRIByTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsTransactionInTRIByTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsTransactionInTRIByTransactionIdPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsTransactionInTRIByTransactionIdPK" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsTransactionInTRIByTransactionIdPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsTransactionInTRIByTransactionIdPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_LockPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:LockPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_LockPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LockPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertPaymentValidatorComm_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaymentValidatorComm" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertPaymentValidatorComm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaymentValidatorCommResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_LoginUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUser" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_LoginUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_RemoveConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_RemoveConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SaveTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SendNotification_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNotification" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SendNotification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SetAppConfiguration_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetAppConfiguration" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SetAppConfiguration_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetAppConfigurationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SetTicketToPaymentClaimStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetTicketToPaymentClaimStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_SetTicketToPaymentClaimStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetTicketToPaymentClaimStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDAS_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestDAS" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDAS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestDASResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBDelete" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBInsert_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBInsert" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBInsert_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBSelect_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBSelect" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBSelect_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBSelectResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestSMTP_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestSMTP" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestSMTP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestSMTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_TestDBUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestDBUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UnLockPaymentClaim_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnLockPaymentClaim" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UnLockPaymentClaim_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnLockPaymentClaimResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateAnnulmentRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnnulmentRequest" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateAnnulmentRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnnulmentRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateAnnulmentValidatorComm_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnnulmentValidatorComm" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateAnnulmentValidatorComm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnnulmentValidatorCommResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClient" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentClaimStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentClaimStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentClaimStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentClaimStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentValidatorComm_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentValidatorComm" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentValidatorComm_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentValidatorCommResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentValidatorCommByIdTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentValidatorCommByIdTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdatePaymentValidatorCommByIdTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentValidatorCommByIdTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateService_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateService" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateTransactionStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTransactionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateJobRunLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJobRunLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateJobRunLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateJobRunLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertJobRunLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertJobRunLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertJobRunLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertJobRunLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsPaymentOffline_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPaymentOffline" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsPaymentOffline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPaymentOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsServiceOffline_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceOffline" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsServiceOffline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsServiceOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsJobConsoleTaskOffline_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsJobConsoleTaskOffline" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_IsJobConsoleTaskOffline_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsJobConsoleTaskOfflineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllConfigs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfigs" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetAllConfigs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllConfigsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertReportJobRunLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReportJobRunLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertReportJobRunLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReportJobRunLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertRefundJobRunLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRefundJobRunLog" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertRefundJobRunLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertRefundJobRunLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateCommerceItemCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommerceItemCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateCommerceItemCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommerceItemCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceConfigByServiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceConfigByServiceId" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetServiceConfigByServiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetServiceConfigByServiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorByCode" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetValidatorByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetValidatorByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemById" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateCommerceItemState_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommerceItemState" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_UpdateCommerceItemState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCommerceItemStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemsToClaimByTransactionIdPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemsToClaimByTransactionIdPK" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemsToClaimByTransactionIdPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemsToClaimByTransactionIdPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemsClaimedByTransactionIdPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemsClaimedByTransactionIdPK" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemsClaimedByTransactionIdPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemsClaimedByTransactionIdPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_ExistClaimForCommerceItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExistClaimForCommerceItem" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_ExistClaimForCommerceItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExistClaimForCommerceItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemNotAnnulledByTransactionIdPK_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemNotAnnulledByTransactionIdPK" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_GetCommerceItemNotAnnulledByTransactionIdPK_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCommerceItemNotAnnulledByTransactionIdPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClient" />
+  </wsdl:message>
+  <wsdl:message name="IPGDataService_InsertClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertClientResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPGDataService">
+    <wsdl:operation name="GetServicesByUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServicesByUser" message="tns:IPGDataService_GetServicesByUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServicesByUserResponse" message="tns:IPGDataService_GetServicesByUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemByPaymentClaimId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemByPaymentClaimId" message="tns:IPGDataService_GetCommerceItemByPaymentClaimId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemByPaymentClaimIdResponse" message="tns:IPGDataService_GetCommerceItemByPaymentClaimId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfTransactionIsComplete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/CheckIfTransactionIsComplete" message="tns:IPGDataService_CheckIfTransactionIsComplete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/CheckIfTransactionIsCompleteResponse" message="tns:IPGDataService_CheckIfTransactionIsComplete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetLanguageByCode" message="tns:IPGDataService_GetLanguageByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetLanguageByCodeResponse" message="tns:IPGDataService_GetLanguageByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionByValidatorTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionByValidatorTransactionId" message="tns:IPGDataService_GetTransactionByValidatorTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionByValidatorTransactionIdResponse" message="tns:IPGDataService_GetTransactionByValidatorTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionValidatorData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionValidatorData" message="tns:IPGDataService_UpdateTransactionValidatorData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionValidatorDataResponse" message="tns:IPGDataService_UpdateTransactionValidatorData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAppVersion" message="tns:IPGDataService_GetAppVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAppVersionResponse" message="tns:IPGDataService_GetAppVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewBuild">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SaveNewBuild" message="tns:IPGDataService_SaveNewBuild_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SaveNewBuildResponse" message="tns:IPGDataService_SaveNewBuild_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNATransactions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetNATransactions" message="tns:IPGDataService_GetNATransactions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetNATransactionsResponse" message="tns:IPGDataService_GetNATransactions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionSyncByJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionSyncByJob" message="tns:IPGDataService_UpdateTransactionSyncByJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionSyncByJobResponse" message="tns:IPGDataService_UpdateTransactionSyncByJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionCloseByTimeOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionCloseByTimeOut" message="tns:IPGDataService_UpdateTransactionCloseByTimeOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionCloseByTimeOutResponse" message="tns:IPGDataService_UpdateTransactionCloseByTimeOut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRenditionInformation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetRenditionInformation" message="tns:IPGDataService_GetRenditionInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetRenditionInformationResponse" message="tns:IPGDataService_GetRenditionInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanUserWorkWithPaymentClaimByPaymentClaimNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/CanUserWorkWithPaymentClaimByPaymentClaimNumber" message="tns:IPGDataService_CanUserWorkWithPaymentClaimByPaymentClaimNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/CanUserWorkWithPaymentClaimByPaymentClaimNumberResponse" message="tns:IPGDataService_CanUserWorkWithPaymentClaimByPaymentClaimNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket_Payment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTicket_Payment" message="tns:IPGDataService_GetTicket_Payment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTicket_PaymentResponse" message="tns:IPGDataService_GetTicket_Payment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MapOriginalCodeFromValidatorToPGCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/MapOriginalCodeFromValidatorToPGCode" message="tns:IPGDataService_MapOriginalCodeFromValidatorToPGCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/MapOriginalCodeFromValidatorToPGCodeResponse" message="tns:IPGDataService_MapOriginalCodeFromValidatorToPGCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidationResponseByStatusCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetValidationResponseByStatusCode" message="tns:IPGDataService_GetValidationResponseByStatusCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetValidationResponseByStatusCodeResponse" message="tns:IPGDataService_GetValidationResponseByStatusCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanUserAccessToService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/CanUserAccessToService" message="tns:IPGDataService_CanUserAccessToService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/CanUserAccessToServiceResponse" message="tns:IPGDataService_CanUserAccessToService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanUserGetMerchantInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/CanUserGetMerchantInfo" message="tns:IPGDataService_CanUserGetMerchantInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/CanUserGetMerchantInfoResponse" message="tns:IPGDataService_CanUserGetMerchantInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanUserGetTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/CanUserGetTransaction" message="tns:IPGDataService_CanUserGetTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/CanUserGetTransactionResponse" message="tns:IPGDataService_CanUserGetTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivePaymentClaimByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetActivePaymentClaimByTransactionId" message="tns:IPGDataService_GetActivePaymentClaimByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetActivePaymentClaimByTransactionIdResponse" message="tns:IPGDataService_GetActivePaymentClaimByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHTTPResponseByStatusCodeOrPGCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetHTTPResponseByStatusCodeOrPGCode" message="tns:IPGDataService_GetHTTPResponseByStatusCodeOrPGCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetHTTPResponseByStatusCodeOrPGCodeResponse" message="tns:IPGDataService_GetHTTPResponseByStatusCodeOrPGCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnulmentResultInfoByPaymentClaimId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAnnulmentResultInfoByPaymentClaimId" message="tns:IPGDataService_GetAnnulmentResultInfoByPaymentClaimId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAnnulmentResultInfoByPaymentClaimIdResponse" message="tns:IPGDataService_GetAnnulmentResultInfoByPaymentClaimId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnulmentValidatorCommById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAnnulmentValidatorCommById" message="tns:IPGDataService_GetAnnulmentValidatorCommById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAnnulmentValidatorCommByIdResponse" message="tns:IPGDataService_GetAnnulmentValidatorCommById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAppConfiguration" message="tns:IPGDataService_GetAppConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAppConfigurationResponse" message="tns:IPGDataService_GetAppConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentResultInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentResultInfo" message="tns:IPGDataService_InsertAnnulmentResultInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentResultInfoResponse" message="tns:IPGDataService_InsertAnnulmentResultInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllChannels">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAllChannels" message="tns:IPGDataService_GetAllChannels_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAllChannelsResponse" message="tns:IPGDataService_GetAllChannels_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPaymentClaimByStatusCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAllPaymentClaimByStatusCode" message="tns:IPGDataService_GetAllPaymentClaimByStatusCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAllPaymentClaimByStatusCodeResponse" message="tns:IPGDataService_GetAllPaymentClaimByStatusCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAllProducts" message="tns:IPGDataService_GetAllProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAllProductsResponse" message="tns:IPGDataService_GetAllProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllValidators">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAllValidators" message="tns:IPGDataService_GetAllValidators_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAllValidatorsResponse" message="tns:IPGDataService_GetAllValidators_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAppConfig" message="tns:IPGDataService_GetAppConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAppConfigResponse" message="tns:IPGDataService_GetAppConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallback">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCallback" message="tns:IPGDataService_GetCallback_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCallbackResponse" message="tns:IPGDataService_GetCallback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChannelByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetChannelByName" message="tns:IPGDataService_GetChannelByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetChannelByNameResponse" message="tns:IPGDataService_GetChannelByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetClaimerById" message="tns:IPGDataService_GetClaimerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetClaimerByIdResponse" message="tns:IPGDataService_GetClaimerById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClients">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetClients" message="tns:IPGDataService_GetClients_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetClientsResponse" message="tns:IPGDataService_GetClients_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienttById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetClienttById" message="tns:IPGDataService_GetClienttById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetClienttByIdResponse" message="tns:IPGDataService_GetClienttById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClienttByShortName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetClienttByShortName" message="tns:IPGDataService_GetClienttByShortName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetClienttByShortNameResponse" message="tns:IPGDataService_GetClienttByShortName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetConfigurations" message="tns:IPGDataService_GetConfigurations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetConfigurationsResponse" message="tns:IPGDataService_GetConfigurations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCurrencies" message="tns:IPGDataService_GetCurrencies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCurrenciesResponse" message="tns:IPGDataService_GetCurrencies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyByIso">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCurrencyByIso" message="tns:IPGDataService_GetCurrencyByIso_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCurrencyByIsoResponse" message="tns:IPGDataService_GetCurrencyByIso_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypeByShortName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetDocTypeByShortName" message="tns:IPGDataService_GetDocTypeByShortName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetDocTypeByShortNameResponse" message="tns:IPGDataService_GetDocTypeByShortName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetDocTypeById" message="tns:IPGDataService_GetDocTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetDocTypeByIdResponse" message="tns:IPGDataService_GetDocTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericCodeByStatusCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetGenericCodeByStatusCode" message="tns:IPGDataService_GetGenericCodeByStatusCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetGenericCodeByStatusCodeResponse" message="tns:IPGDataService_GetGenericCodeByStatusCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastPaymentClaimStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetLastPaymentClaimStatus" message="tns:IPGDataService_GetLastPaymentClaimStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetLastPaymentClaimStatusResponse" message="tns:IPGDataService_GetLastPaymentClaimStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetLastPayment" message="tns:IPGDataService_GetLastPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetLastPaymentResponse" message="tns:IPGDataService_GetLastPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeByStatusCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeByStatusCode" message="tns:IPGDataService_GetModuleCodeByStatusCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeByStatusCodeResponse" message="tns:IPGDataService_GetModuleCodeByStatusCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeOfPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeOfPaymentClaim" message="tns:IPGDataService_GetModuleCodeOfPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeOfPaymentClaimResponse" message="tns:IPGDataService_GetModuleCodeOfPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeOfTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeOfTransaction" message="tns:IPGDataService_GetModuleCodeOfTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetModuleCodeOfTransactionResponse" message="tns:IPGDataService_GetModuleCodeOfTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimsByCriteria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimsByCriteria" message="tns:IPGDataService_GetPaymentClaimsByCriteria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimsByCriteriaResponse" message="tns:IPGDataService_GetPaymentClaimsByCriteria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimIdByNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimIdByNumber" message="tns:IPGDataService_GetPaymentClaimIdByNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimIdByNumberResponse" message="tns:IPGDataService_GetPaymentClaimIdByNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimById" message="tns:IPGDataService_GetPaymentClaimById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimByIdResponse" message="tns:IPGDataService_GetPaymentClaimById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimsByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimsByTransactionId" message="tns:IPGDataService_GetPaymentClaimsByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimsByTransactionIdResponse" message="tns:IPGDataService_GetPaymentClaimsByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimStatusHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimStatusHistory" message="tns:IPGDataService_GetPaymentClaimStatusHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetPaymentClaimStatusHistoryResponse" message="tns:IPGDataService_GetPaymentClaimStatusHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetProductById" message="tns:IPGDataService_GetProductById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetProductByIdResponse" message="tns:IPGDataService_GetProductById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductIdOfValidator">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetProductIdOfValidator" message="tns:IPGDataService_GetProductIdOfValidator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetProductIdOfValidatorResponse" message="tns:IPGDataService_GetProductIdOfValidator_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetProductsByService" message="tns:IPGDataService_GetProductsByService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetProductsByServiceResponse" message="tns:IPGDataService_GetProductsByService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportRendition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetReportRendition" message="tns:IPGDataService_GetReportRendition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetReportRenditionResponse" message="tns:IPGDataService_GetReportRendition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport814">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetReport814" message="tns:IPGDataService_GetReport814_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetReport814Response" message="tns:IPGDataService_GetReport814_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportRenditionRefunds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetReportRenditionRefunds" message="tns:IPGDataService_GetReportRenditionRefunds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetReportRenditionRefundsResponse" message="tns:IPGDataService_GetReportRenditionRefunds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport814Refunds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetReport814Refunds" message="tns:IPGDataService_GetReport814Refunds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetReport814RefundsResponse" message="tns:IPGDataService_GetReport814Refunds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportConciliation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetReportConciliation" message="tns:IPGDataService_GetReportConciliation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetReportConciliationResponse" message="tns:IPGDataService_GetReportConciliation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetRolesByUsername" message="tns:IPGDataService_GetRolesByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetRolesByUsernameResponse" message="tns:IPGDataService_GetRolesByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServiceById" message="tns:IPGDataService_GetServiceById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServiceByIdResponse" message="tns:IPGDataService_GetServiceById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByMerchantId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServiceByMerchantId" message="tns:IPGDataService_GetServiceByMerchantId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServiceByMerchantIdResponse" message="tns:IPGDataService_GetServiceByMerchantId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServiceByTransactionId" message="tns:IPGDataService_GetServiceByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServiceByTransactionIdResponse" message="tns:IPGDataService_GetServiceByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServices" message="tns:IPGDataService_GetServices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServicesResponse" message="tns:IPGDataService_GetServices_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatus" message="tns:IPGDataService_GetStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusResponse" message="tns:IPGDataService_GetStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusCodeByOriginalCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatusCodeByOriginalCode" message="tns:IPGDataService_GetStatusCodeByOriginalCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusCodeByOriginalCodeResponse" message="tns:IPGDataService_GetStatusCodeByOriginalCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusCodeOfPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatusCodeOfPaymentClaim" message="tns:IPGDataService_GetStatusCodeOfPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusCodeOfPaymentClaimResponse" message="tns:IPGDataService_GetStatusCodeOfPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByPaymentClaim" message="tns:IPGDataService_GetStatusMessageByPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByPaymentClaimResponse" message="tns:IPGDataService_GetStatusMessageByPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByOriginalCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByOriginalCode" message="tns:IPGDataService_GetStatusMessageByOriginalCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByOriginalCodeResponse" message="tns:IPGDataService_GetStatusMessageByOriginalCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByStatusCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByStatusCode" message="tns:IPGDataService_GetStatusMessageByStatusCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetStatusMessageByStatusCodeResponse" message="tns:IPGDataService_GetStatusMessageByStatusCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket_PaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTicket_PaymentClaim" message="tns:IPGDataService_GetTicket_PaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTicket_PaymentClaimResponse" message="tns:IPGDataService_GetTicket_PaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionById" message="tns:IPGDataService_GetTransactionById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionByIdResponse" message="tns:IPGDataService_GetTransactionById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsByElectronicPaymentCodeAndMerchantId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionsByElectronicPaymentCodeAndMerchantId" message="tns:IPGDataService_GetTransactionsByElectronicPaymentCodeAndMerchantId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionsByElectronicPaymentCodeAndMerchantIdResponse" message="tns:IPGDataService_GetTransactionsByElectronicPaymentCodeAndMerchantId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="isDuplicatedElectronicPaymentCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/isDuplicatedElectronicPaymentCode" message="tns:IPGDataService_isDuplicatedElectronicPaymentCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/isDuplicatedElectronicPaymentCodeResponse" message="tns:IPGDataService_isDuplicatedElectronicPaymentCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionByTransactionId" message="tns:IPGDataService_GetTransactionByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionByTransactionIdResponse" message="tns:IPGDataService_GetTransactionByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionPKByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionPKByTransactionId" message="tns:IPGDataService_GetTransactionPKByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionPKByTransactionIdResponse" message="tns:IPGDataService_GetTransactionPKByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionResult" message="tns:IPGDataService_GetTransactionResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTransactionResultResponse" message="tns:IPGDataService_GetTransactionResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketInformationToRePrint">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetTicketInformationToRePrint" message="tns:IPGDataService_GetTicketInformationToRePrint_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetTicketInformationToRePrintResponse" message="tns:IPGDataService_GetTicketInformationToRePrint_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUniqueCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetUniqueCode" message="tns:IPGDataService_GetUniqueCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetUniqueCodeResponse" message="tns:IPGDataService_GetUniqueCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetUser" message="tns:IPGDataService_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetUserResponse" message="tns:IPGDataService_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUsername">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetUserByUsername" message="tns:IPGDataService_GetUserByUsername_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetUserByUsernameResponse" message="tns:IPGDataService_GetUserByUsername_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorById" message="tns:IPGDataService_GetValidatorById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorByIdResponse" message="tns:IPGDataService_GetValidatorById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorConfigByServiceId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorConfigByServiceId" message="tns:IPGDataService_GetValidatorConfigByServiceId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorConfigByServiceIdResponse" message="tns:IPGDataService_GetValidatorConfigByServiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorFromConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorFromConfiguration" message="tns:IPGDataService_GetValidatorFromConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorFromConfigurationResponse" message="tns:IPGDataService_GetValidatorFromConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentRequest" message="tns:IPGDataService_InsertAnnulmentRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentRequestResponse" message="tns:IPGDataService_InsertAnnulmentRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentValidatorComm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentValidatorComm" message="tns:IPGDataService_InsertAnnulmentValidatorComm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertAnnulmentValidatorCommResponse" message="tns:IPGDataService_InsertAnnulmentValidatorComm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertConfiguration" message="tns:IPGDataService_InsertConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertConfigurationResponse" message="tns:IPGDataService_InsertConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SaveLog" message="tns:IPGDataService_SaveLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SaveLogResponse" message="tns:IPGDataService_SaveLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNotificationConfig">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertNotificationConfig" message="tns:IPGDataService_InsertNotificationConfig_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertNotificationConfigResponse" message="tns:IPGDataService_InsertNotificationConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertNotificationLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertNotificationLog" message="tns:IPGDataService_InsertNotificationLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertNotificationLogResponse" message="tns:IPGDataService_InsertNotificationLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertPaymentClaim" message="tns:IPGDataService_InsertPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertPaymentClaimResponse" message="tns:IPGDataService_InsertPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTransactionResultInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertTransactionResultInfo" message="tns:IPGDataService_InsertTransactionResultInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertTransactionResultInfoResponse" message="tns:IPGDataService_InsertTransactionResultInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPaymentClaimLocked">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsPaymentClaimLocked" message="tns:IPGDataService_IsPaymentClaimLocked_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsPaymentClaimLockedResponse" message="tns:IPGDataService_IsPaymentClaimLocked_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsTransactionInTRIByTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionId" message="tns:IPGDataService_IsTransactionInTRIByTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionIdResponse" message="tns:IPGDataService_IsTransactionInTRIByTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsTransactionInTRIByTransactionIdPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionIdPK" message="tns:IPGDataService_IsTransactionInTRIByTransactionIdPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionIdPKResponse" message="tns:IPGDataService_IsTransactionInTRIByTransactionIdPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LockPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/LockPaymentClaim" message="tns:IPGDataService_LockPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/LockPaymentClaimResponse" message="tns:IPGDataService_LockPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentValidatorComm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertPaymentValidatorComm" message="tns:IPGDataService_InsertPaymentValidatorComm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertPaymentValidatorCommResponse" message="tns:IPGDataService_InsertPaymentValidatorComm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/LoginUser" message="tns:IPGDataService_LoginUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/LoginUserResponse" message="tns:IPGDataService_LoginUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/RemoveConfiguration" message="tns:IPGDataService_RemoveConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/RemoveConfigurationResponse" message="tns:IPGDataService_RemoveConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SaveTransaction" message="tns:IPGDataService_SaveTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SaveTransactionResponse" message="tns:IPGDataService_SaveTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendNotification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SendNotification" message="tns:IPGDataService_SendNotification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SendNotificationResponse" message="tns:IPGDataService_SendNotification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SendEmail" message="tns:IPGDataService_SendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SendEmailResponse" message="tns:IPGDataService_SendEmail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAppConfiguration">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SetAppConfiguration" message="tns:IPGDataService_SetAppConfiguration_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SetAppConfigurationResponse" message="tns:IPGDataService_SetAppConfiguration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetTicketToPaymentClaimStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/SetTicketToPaymentClaimStatus" message="tns:IPGDataService_SetTicketToPaymentClaimStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/SetTicketToPaymentClaimStatusResponse" message="tns:IPGDataService_SetTicketToPaymentClaimStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestDAS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestDAS" message="tns:IPGDataService_TestDAS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestDASResponse" message="tns:IPGDataService_TestDAS_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestDBDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestDBDelete" message="tns:IPGDataService_TestDBDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestDBDeleteResponse" message="tns:IPGDataService_TestDBDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestDBInsert">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestDBInsert" message="tns:IPGDataService_TestDBInsert_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestDBInsertResponse" message="tns:IPGDataService_TestDBInsert_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestDBSelect">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestDBSelect" message="tns:IPGDataService_TestDBSelect_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestDBSelectResponse" message="tns:IPGDataService_TestDBSelect_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestSMTP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestSMTP" message="tns:IPGDataService_TestSMTP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestSMTPResponse" message="tns:IPGDataService_TestSMTP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestDBUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/TestDBUpdate" message="tns:IPGDataService_TestDBUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/TestDBUpdateResponse" message="tns:IPGDataService_TestDBUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnLockPaymentClaim">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UnLockPaymentClaim" message="tns:IPGDataService_UnLockPaymentClaim_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UnLockPaymentClaimResponse" message="tns:IPGDataService_UnLockPaymentClaim_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnnulmentRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateAnnulmentRequest" message="tns:IPGDataService_UpdateAnnulmentRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateAnnulmentRequestResponse" message="tns:IPGDataService_UpdateAnnulmentRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnnulmentValidatorComm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateAnnulmentValidatorComm" message="tns:IPGDataService_UpdateAnnulmentValidatorComm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateAnnulmentValidatorCommResponse" message="tns:IPGDataService_UpdateAnnulmentValidatorComm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateClient" message="tns:IPGDataService_UpdateClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateClientResponse" message="tns:IPGDataService_UpdateClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentClaimStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentClaimStatus" message="tns:IPGDataService_UpdatePaymentClaimStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentClaimStatusResponse" message="tns:IPGDataService_UpdatePaymentClaimStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentValidatorComm">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentValidatorComm" message="tns:IPGDataService_UpdatePaymentValidatorComm_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentValidatorCommResponse" message="tns:IPGDataService_UpdatePaymentValidatorComm_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentValidatorCommByIdTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentValidatorCommByIdTransaction" message="tns:IPGDataService_UpdatePaymentValidatorCommByIdTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdatePaymentValidatorCommByIdTransactionResponse" message="tns:IPGDataService_UpdatePaymentValidatorCommByIdTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateService" message="tns:IPGDataService_UpdateService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateServiceResponse" message="tns:IPGDataService_UpdateService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransaction" message="tns:IPGDataService_UpdateTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionResponse" message="tns:IPGDataService_UpdateTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionId" message="tns:IPGDataService_UpdateTransactionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionIdResponse" message="tns:IPGDataService_UpdateTransactionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionStatus" message="tns:IPGDataService_UpdateTransactionStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateTransactionStatusResponse" message="tns:IPGDataService_UpdateTransactionStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJobRunLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateJobRunLog" message="tns:IPGDataService_UpdateJobRunLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateJobRunLogResponse" message="tns:IPGDataService_UpdateJobRunLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertJobRunLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertJobRunLog" message="tns:IPGDataService_InsertJobRunLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertJobRunLogResponse" message="tns:IPGDataService_InsertJobRunLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPaymentOffline">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsPaymentOffline" message="tns:IPGDataService_IsPaymentOffline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsPaymentOfflineResponse" message="tns:IPGDataService_IsPaymentOffline_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceOffline">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsServiceOffline" message="tns:IPGDataService_IsServiceOffline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsServiceOfflineResponse" message="tns:IPGDataService_IsServiceOffline_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsJobConsoleTaskOffline">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/IsJobConsoleTaskOffline" message="tns:IPGDataService_IsJobConsoleTaskOffline_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/IsJobConsoleTaskOfflineResponse" message="tns:IPGDataService_IsJobConsoleTaskOffline_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllConfigs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetAllConfigs" message="tns:IPGDataService_GetAllConfigs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetAllConfigsResponse" message="tns:IPGDataService_GetAllConfigs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertReportJobRunLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertReportJobRunLog" message="tns:IPGDataService_InsertReportJobRunLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertReportJobRunLogResponse" message="tns:IPGDataService_InsertReportJobRunLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertRefundJobRunLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertRefundJobRunLog" message="tns:IPGDataService_InsertRefundJobRunLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertRefundJobRunLogResponse" message="tns:IPGDataService_InsertRefundJobRunLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommerceItemCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateCommerceItemCode" message="tns:IPGDataService_UpdateCommerceItemCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateCommerceItemCodeResponse" message="tns:IPGDataService_UpdateCommerceItemCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceConfigByServiceId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetServiceConfigByServiceId" message="tns:IPGDataService_GetServiceConfigByServiceId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetServiceConfigByServiceIdResponse" message="tns:IPGDataService_GetServiceConfigByServiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorByCode" message="tns:IPGDataService_GetValidatorByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetValidatorByCodeResponse" message="tns:IPGDataService_GetValidatorByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemById" message="tns:IPGDataService_GetCommerceItemById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemByIdResponse" message="tns:IPGDataService_GetCommerceItemById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommerceItemState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/UpdateCommerceItemState" message="tns:IPGDataService_UpdateCommerceItemState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/UpdateCommerceItemStateResponse" message="tns:IPGDataService_UpdateCommerceItemState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemsToClaimByTransactionIdPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemsToClaimByTransactionIdPK" message="tns:IPGDataService_GetCommerceItemsToClaimByTransactionIdPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemsToClaimByTransactionIdPKResponse" message="tns:IPGDataService_GetCommerceItemsToClaimByTransactionIdPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemsClaimedByTransactionIdPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemsClaimedByTransactionIdPK" message="tns:IPGDataService_GetCommerceItemsClaimedByTransactionIdPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemsClaimedByTransactionIdPKResponse" message="tns:IPGDataService_GetCommerceItemsClaimedByTransactionIdPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistClaimForCommerceItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/ExistClaimForCommerceItem" message="tns:IPGDataService_ExistClaimForCommerceItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/ExistClaimForCommerceItemResponse" message="tns:IPGDataService_ExistClaimForCommerceItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemNotAnnulledByTransactionIdPK">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemNotAnnulledByTransactionIdPK" message="tns:IPGDataService_GetCommerceItemNotAnnulledByTransactionIdPK_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/GetCommerceItemNotAnnulledByTransactionIdPKResponse" message="tns:IPGDataService_GetCommerceItemNotAnnulledByTransactionIdPK_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPGDataService/InsertClient" message="tns:IPGDataService_InsertClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPGDataService/InsertClientResponse" message="tns:IPGDataService_InsertClient_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPGDataService" type="tns:IPGDataService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IPGDataService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServicesByUser">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServicesByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemByPaymentClaimId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCommerceItemByPaymentClaimId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfTransactionIsComplete">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/CheckIfTransactionIsComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguageByCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetLanguageByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionByValidatorTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionByValidatorTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionValidatorData">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransactionValidatorData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppVersion">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAppVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewBuild">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SaveNewBuild" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNATransactions">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetNATransactions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionSyncByJob">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransactionSyncByJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionCloseByTimeOut">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransactionCloseByTimeOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRenditionInformation">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetRenditionInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanUserWorkWithPaymentClaimByPaymentClaimNumber">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/CanUserWorkWithPaymentClaimByPaymentClaimNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket_Payment">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTicket_Payment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MapOriginalCodeFromValidatorToPGCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/MapOriginalCodeFromValidatorToPGCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidationResponseByStatusCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetValidationResponseByStatusCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanUserAccessToService">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/CanUserAccessToService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanUserGetMerchantInfo">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/CanUserGetMerchantInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanUserGetTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/CanUserGetTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActivePaymentClaimByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetActivePaymentClaimByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHTTPResponseByStatusCodeOrPGCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetHTTPResponseByStatusCodeOrPGCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnulmentResultInfoByPaymentClaimId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAnnulmentResultInfoByPaymentClaimId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAnnulmentValidatorCommById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAnnulmentValidatorCommById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAppConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentResultInfo">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertAnnulmentResultInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllChannels">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAllChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPaymentClaimByStatusCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAllPaymentClaimByStatusCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllProducts">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAllProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllValidators">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAllValidators" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppConfig">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAppConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallback">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCallback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChannelByName">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetChannelByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClaimerById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetClaimerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClients">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetClients" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienttById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetClienttById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClienttByShortName">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetClienttByShortName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurations">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetConfigurations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencies">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCurrencies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrencyByIso">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCurrencyByIso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypeByShortName">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetDocTypeByShortName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocTypeById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetDocTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericCodeByStatusCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetGenericCodeByStatusCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastPaymentClaimStatus">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetLastPaymentClaimStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastPayment">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetLastPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeByStatusCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetModuleCodeByStatusCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeOfPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetModuleCodeOfPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModuleCodeOfTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetModuleCodeOfTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimsByCriteria">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetPaymentClaimsByCriteria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimIdByNumber">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetPaymentClaimIdByNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetPaymentClaimById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimsByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetPaymentClaimsByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentClaimStatusHistory">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetPaymentClaimStatusHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetProductById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductIdOfValidator">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetProductIdOfValidator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductsByService">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetProductsByService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportRendition">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetReportRendition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport814">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetReport814" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportRenditionRefunds">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetReportRenditionRefunds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport814Refunds">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetReport814Refunds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportConciliation">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetReportConciliation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesByUsername">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetRolesByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServiceById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByMerchantId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServiceByMerchantId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServiceByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServices">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServices" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusCodeByOriginalCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatusCodeByOriginalCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusCodeOfPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatusCodeOfPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatusMessageByPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByOriginalCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatusMessageByOriginalCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatusMessageByStatusCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetStatusMessageByStatusCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicket_PaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTicket_PaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionsByElectronicPaymentCodeAndMerchantId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionsByElectronicPaymentCodeAndMerchantId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isDuplicatedElectronicPaymentCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/isDuplicatedElectronicPaymentCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionPKByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionPKByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionResult">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTransactionResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTicketInformationToRePrint">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetTicketInformationToRePrint" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUniqueCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetUniqueCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUsername">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetUserByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetValidatorById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorConfigByServiceId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetValidatorConfigByServiceId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorFromConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetValidatorFromConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentRequest">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertAnnulmentRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertAnnulmentValidatorComm">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertAnnulmentValidatorComm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SaveLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNotificationConfig">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertNotificationConfig" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertNotificationLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertNotificationLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTransactionResultInfo">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertTransactionResultInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPaymentClaimLocked">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsPaymentClaimLocked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsTransactionInTRIByTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsTransactionInTRIByTransactionIdPK">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsTransactionInTRIByTransactionIdPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/LockPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertPaymentValidatorComm">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertPaymentValidatorComm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginUser">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/LoginUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/RemoveConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SaveTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendNotification">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SendNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAppConfiguration">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SetAppConfiguration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetTicketToPaymentClaimStatus">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/SetTicketToPaymentClaimStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestDAS">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestDAS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestDBDelete">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestDBDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestDBInsert">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestDBInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestDBSelect">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestDBSelect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestSMTP">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestSMTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestDBUpdate">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/TestDBUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnLockPaymentClaim">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UnLockPaymentClaim" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnnulmentRequest">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateAnnulmentRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnnulmentValidatorComm">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateAnnulmentValidatorComm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClient">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentClaimStatus">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdatePaymentClaimStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentValidatorComm">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdatePaymentValidatorComm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePaymentValidatorCommByIdTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdatePaymentValidatorCommByIdTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateService">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransactionId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTransactionStatus">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateTransactionStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateJobRunLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateJobRunLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertJobRunLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertJobRunLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPaymentOffline">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsPaymentOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsServiceOffline">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsServiceOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsJobConsoleTaskOffline">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/IsJobConsoleTaskOffline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllConfigs">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetAllConfigs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertReportJobRunLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertReportJobRunLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertRefundJobRunLog">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertRefundJobRunLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommerceItemCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateCommerceItemCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiceConfigByServiceId">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetServiceConfigByServiceId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidatorByCode">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetValidatorByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemById">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCommerceItemById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCommerceItemState">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/UpdateCommerceItemState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemsToClaimByTransactionIdPK">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCommerceItemsToClaimByTransactionIdPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemsClaimedByTransactionIdPK">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCommerceItemsClaimedByTransactionIdPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistClaimForCommerceItem">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/ExistClaimForCommerceItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCommerceItemNotAnnulledByTransactionIdPK">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/GetCommerceItemNotAnnulledByTransactionIdPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertClient">
+      <soap:operation soapAction="http://tempuri.org/IPGDataService/InsertClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PGDataService">
+    <wsdl:port name="BasicHttpBinding_IPGDataService" binding="tns:BasicHttpBinding_IPGDataService">
+      <soap:address location="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

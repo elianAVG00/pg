@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace SPSCierreLote.EFCore.models;
+
+public partial class Channels1
+{
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string Description { get; set; } = null!;
+
+    public bool IsActive { get; set; }
+
+    public string CreatedBy { get; set; } = null!;
+
+    public DateTime CreatedOn { get; set; }
+
+    public string? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+
+    public virtual ICollection<ServiceChannels> ServiceChannels { get; set; } = new List<ServiceChannels>();
+}

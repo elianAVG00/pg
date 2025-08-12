@@ -1,0 +1,2591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PaymentGatewayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PaymentClaim">
+          <Key>
+            <PropertyRef Name="PaymentClaimId" />
+          </Key>
+          <Property Name="PaymentClaimId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentClaimNumber" Type="bigint" Nullable="false" />
+          <Property Name="ClaimerId" Type="int" />
+          <Property Name="TransactionId" Type="bigint" />
+          <Property Name="CurrencyId" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Observation" Type="varchar" MaxLength="255" />
+          <Property Name="IsAutomatic" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Setting" Type="varchar" MaxLength="250" />
+          <Property Name="Value" Type="varchar(max)" />
+          <Property Name="ConfigType" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="DeleteTime" Type="datetime" />
+          <Property Name="ViewOrderInWebAdmin" Type="int" />
+          <Property Name="ViewSpecialBackgroundColor" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configurations">
+          <Key>
+            <PropertyRef Name="ConfigurationId" />
+          </Key>
+          <Property Name="ConfigurationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ChannelId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ValidatorId" Type="int" Nullable="false" />
+          <Property Name="UniqueCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CommerceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsoCode" Type="char" MaxLength="3" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ISO6391" Type="varchar" MaxLength="2" />
+          <Property Name="ISO6392" Type="varchar" MaxLength="3" />
+          <Property Name="ISO3166" Type="varchar" MaxLength="3" />
+          <Property Name="NativeName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="validatorId" Type="int" />
+          <Property Name="Type" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ModuleCode">
+          <Key>
+            <PropertyRef Name="ModuleCodeId" />
+          </Key>
+          <Property Name="ModuleCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="OriginalCode" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TechnicalInfo" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCode" Type="int" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsDebit" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProductsValidators">
+          <Key>
+            <PropertyRef Name="ProductValidatorId" />
+          </Key>
+          <Property Name="ProductValidatorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ValidatorId" Type="int" Nullable="false" />
+          <Property Name="CardCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="MerchantId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ServicesConfig">
+          <Key>
+            <PropertyRef Name="ServiceConfigId" />
+          </Key>
+          <Property Name="ServiceConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ExternalId" Type="int" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="TerminalId" Type="int" />
+          <Property Name="RptToRendition" Type="bit" Nullable="false" />
+          <Property Name="RptToConciliation" Type="bit" Nullable="false" />
+          <Property Name="RptToCentralizer" Type="bit" Nullable="false" />
+          <Property Name="RenditionType" Type="int" Nullable="false" />
+          <Property Name="IsCallbackPosted" Type="bit" Nullable="false" />
+          <Property Name="SenderMail" Type="varchar" MaxLength="255" />
+          <Property Name="SenderURL" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsCommerceItemValidated" Type="bit" Nullable="false" />
+          <Property Name="IsPaymentSecured" Type="bit" Nullable="false" />
+          <Property Name="ReportsPath" Type="varchar" MaxLength="8000" />
+          <Property Name="ReportBeginConciliation" Type="datetime" Nullable="false" />
+          <Property Name="ReportBeginCentralizer" Type="datetime" Nullable="false" />
+          <Property Name="ReportBeginRendition" Type="datetime" Nullable="false" />
+          <Property Name="IncludeBinInExport" Type="bit" Nullable="false" />
+          <Property Name="ExcludeFromSPSBatchCloseInPaywayBO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VersionLog">
+          <Key>
+            <PropertyRef Name="VersionLogId" />
+          </Key>
+          <Property Name="VersionLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="Major" Type="int" Nullable="false" />
+          <Property Name="Minor" Type="int" Nullable="false" />
+          <Property Name="Maintenance" Type="int" Nullable="false" />
+          <Property Name="Build" Type="int" Nullable="false" />
+          <Property Name="Support" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Revision" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deploy" Type="int" Nullable="false" />
+          <Property Name="RequestBy" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="DeployDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InternalNbr" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Channel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Client" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SalePoint" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Service" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Validator" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebSvcMethod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JSonObject" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SettingId" Type="int" Nullable="false" />
+          <Property Name="MerchantId" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ElectronicPaymentCode" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="CurrencyCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TrxCurrencyCode" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TrxAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ConvertionRate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationConfig">
+          <Key>
+            <PropertyRef Name="NotificationConfigId" />
+          </Key>
+          <Property Name="NotificationConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="StatusTemplateId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="AdditionalHeader" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="AdditionalFooter" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotificationLog">
+          <Key>
+            <PropertyRef Name="NotificationLogId" />
+          </Key>
+          <Property Name="NotificationLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="TicketLogId" Type="int" />
+          <Property Name="TypeFormat" Type="varchar" MaxLength="100" />
+          <Property Name="HtmlNotification" Type="varchar" MaxLength="8000" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NotificationTemplate">
+          <Key>
+            <PropertyRef Name="NotificationTemplateId" />
+          </Key>
+          <Property Name="NotificationTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="40" />
+          <Property Name="TemplateSubject" Type="varchar" MaxLength="255" />
+          <Property Name="TemplateBody" Type="varchar" MaxLength="8000" />
+          <Property Name="TemplateTicket" Type="varchar" MaxLength="8000" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusTemplate">
+          <Key>
+            <PropertyRef Name="StatusTemplateId" />
+          </Key>
+          <Property Name="StatusTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusCodeId" Type="int" />
+          <Property Name="NotificationTemplateId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TicketLog">
+          <Key>
+            <PropertyRef Name="TicketLogId" />
+          </Key>
+          <Property Name="TicketLogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TicketNumber" Type="bigint" Nullable="false" />
+          <Property Name="TypeFormat" Type="varchar" MaxLength="100" />
+          <Property Name="HtmlTicket" Type="varchar" MaxLength="8000" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionTicket">
+          <Key>
+            <PropertyRef Name="TransactionTicketId" />
+          </Key>
+          <Property Name="TransactionTicketId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionIdPK" Type="bigint" Nullable="false" />
+          <Property Name="StatusTemplateId" Type="int" Nullable="false" />
+		  <Property Name="TicketNumber" Type="bigint" StoreGeneratedPattern="Computed" Nullable="false" />
+		  <Property Name="EmailSent" Type="bit" Nullable="false" />
+          <Property Name="EmailSentDate" Type="datetime" />
+          <Property Name="SentBySync" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionAdditionalInfo">
+          <Key>
+            <PropertyRef Name="TransactionAdditionalInfoId" />
+          </Key>
+          <Property Name="TransactionAdditionalInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionIdPK" Type="bigint" Nullable="false" />
+          <Property Name="VersionUsed" Type="varchar" MaxLength="250" />
+          <Property Name="CustomerMail" Type="varchar" MaxLength="250" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="ValidatorId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="ExternalApp" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ChannelId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="MerchantId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UniqueCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Payments" Type="int" Nullable="false" />
+          <Property Name="BarCode" Type="varchar" MaxLength="250" />
+          <Property Name="CallbackUrl" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IsEPCValidated" Type="bit" />
+          <Property Name="EPCValidateURL" Type="varchar" MaxLength="1000" />
+          <Property Name="CurrentAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProdVersionUsed" Type="varchar" MaxLength="50" />
+          <Property Name="IsCommerceItemValidated" Type="bit" Nullable="false" />
+          <Property Name="IsSimulation" Type="bit" Nullable="false" />
+          <Property Name="TransactionNumber" Type="bigint" Nullable="false" />
+          <Property Name="WasTimeOutForced" Type="bit" Nullable="false" />
+          <Property Name="WasSyncByJob" Type="bit" Nullable="false" />
+          <Property Name="ReportDateConciliation" Type="datetime" />
+          <Property Name="ReportDateCentralizer" Type="datetime" />
+          <Property Name="ReportDateRendition" Type="datetime" />
+          <Property Name="AuthorizationCode" Type="varchar" MaxLength="50" />
+          <Property Name="CardMask" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolder" Type="varchar" MaxLength="250" />
+          <Property Name="TicketNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BatchNbr" Type="varchar" MaxLength="20" />
+          <Property Name="SynchronizationDate" Type="datetime" />
+          <Property Name="BatchSPSDate" Type="datetime" />
+          <Property Name="LastStatus" Type="int" Nullable="false" />
+          <Property Name="ConfirmedByAutoBackOffice" Type="datetime" />
+          <Property Name="ConfirmedByManualSupportOn" Type="datetime" />
+          <Property Name="ConfirmedByManualSupportBy" Type="varchar" MaxLength="250" />
+          <Property Name="OriginalReason" Type="varchar" MaxLength="8000" />
+        </EntityType>
+        <EntityType Name="TransactionResultInfo">
+          <Key>
+            <PropertyRef Name="TransactionResultInfoId" />
+          </Key>
+          <Property Name="TransactionResultInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionIdPK" Type="bigint" Nullable="false" />
+          <Property Name="ResponseCode" Type="varchar" MaxLength="100" />
+          <Property Name="StateMessage" Type="varchar" MaxLength="255" />
+          <Property Name="StateExtendedMessage" Type="varchar" MaxLength="255" />
+          <Property Name="Amount" Type="bigint" />
+          <Property Name="Payments" Type="int" />
+          <Property Name="Currency" Type="varchar" MaxLength="10" />
+          <Property Name="Country" Type="varchar" MaxLength="10" />
+          <Property Name="AuthorizationCode" Type="varchar" MaxLength="50" />
+          <Property Name="CardMask" Type="varchar" MaxLength="50" />
+          <Property Name="CardNbrLfd" Type="varchar" MaxLength="4" />
+          <Property Name="CardHolder" Type="varchar" MaxLength="250" />
+          <Property Name="CustomerDocType" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerDocNumber" Type="varchar" MaxLength="50" />
+          <Property Name="TicketNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="BatchNbr" Type="varchar" MaxLength="20" />
+          <Property Name="SynchronizationDate" Type="datetime" />
+          <Property Name="BatchSPSDate" Type="datetime" />
+          <Property Name="MailSynchronizationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TransactionStatus">
+          <Key>
+            <PropertyRef Name="TransactionStatusId" />
+          </Key>
+          <Property Name="TransactionStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionsId" Type="bigint" Nullable="false" />
+          <Property Name="StatusCodeId" Type="int" Nullable="false" />
+          <Property Name="IsActual" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Thread" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Exception" Type="varchar(max)" />
+          <Property Name="InnerException" Type="varchar(max)" />
+          <Property Name="Transaction" Type="varchar" MaxLength="250" />
+          <Property Name="createdBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="createdOn" Type="datetime" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pswd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pswd" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pswdId" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserService">
+          <Key>
+            <PropertyRef Name="UserServiceId" />
+          </Key>
+          <Property Name="UserServiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ServiceId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodeMapping">
+          <Key>
+            <PropertyRef Name="CodeMappingId" />
+          </Key>
+          <Property Name="CodeMappingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleCodeId" Type="int" Nullable="false" />
+          <Property Name="StatusCodeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="GenericCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusCode">
+          <Key>
+            <PropertyRef Name="StatusCodeId" />
+          </Key>
+          <Property Name="StatusCodeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="GenericCodeId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="100" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StatusMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdLanguage" Type="int" Nullable="false" />
+          <Property Name="StatusCodeId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CodeMapping_ModuleCode">
+          <End Role="ModuleCode" Type="Self.ModuleCode" Multiplicity="1" />
+          <End Role="CodeMapping" Type="Self.CodeMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleCode">
+              <PropertyRef Name="ModuleCodeId" />
+            </Principal>
+            <Dependent Role="CodeMapping">
+              <PropertyRef Name="ModuleCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CodeMapping_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="CodeMapping" Type="Self.CodeMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="CodeMapping">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Configurations_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Configurations" Type="Self.Configurations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Configurations">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Configurations_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Configurations" Type="Self.Configurations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Configurations">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleCode_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="ModuleCode" Type="Self.ModuleCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleCode">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationConfig_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="NotificationConfig" Type="Self.NotificationConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="NotificationConfig">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationConfig_StatusTemplate">
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="0..1" />
+          <End Role="NotificationConfig" Type="Self.NotificationConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTemplate">
+              <PropertyRef Name="StatusTemplateId" />
+            </Principal>
+            <Dependent Role="NotificationConfig">
+              <PropertyRef Name="StatusTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationLog_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="NotificationLog" Type="Self.NotificationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationLog">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationLog_TicketLog">
+          <End Role="TicketLog" Type="Self.TicketLog" Multiplicity="0..1" />
+          <End Role="NotificationLog" Type="Self.NotificationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TicketLog">
+              <PropertyRef Name="TicketLogId" />
+            </Principal>
+            <Dependent Role="NotificationLog">
+              <PropertyRef Name="TicketLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentClaim_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="PaymentClaim" Type="Self.PaymentClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="PaymentClaim">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaymentClaim_Transactions">
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="0..1" />
+          <End Role="PaymentClaim" Type="Self.PaymentClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentClaim">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductsValidators_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="ProductsValidators" Type="Self.ProductsValidators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductsValidators">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesConfig_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="ServicesConfig" Type="Self.ServicesConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServicesConfig">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusCode_GenericCode">
+          <End Role="GenericCode" Type="Self.GenericCode" Multiplicity="1" />
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenericCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StatusCode">
+              <PropertyRef Name="GenericCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusMessage_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="StatusMessage" Type="Self.StatusMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StatusMessage">
+              <PropertyRef Name="IdLanguage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusMessage_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="StatusMessage" Type="Self.StatusMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="StatusMessage">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusTemplate_NotificationTemplate">
+          <End Role="NotificationTemplate" Type="Self.NotificationTemplate" Multiplicity="0..1" />
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTemplate">
+              <PropertyRef Name="NotificationTemplateId" />
+            </Principal>
+            <Dependent Role="StatusTemplate">
+              <PropertyRef Name="NotificationTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusTemplate_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="0..1" />
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="StatusTemplate">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Currencies">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Transactions">
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="TransactionIdPK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionResultInfo_Transactions">
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="1" />
+          <End Role="TransactionResultInfo" Type="Self.TransactionResultInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionResultInfo">
+              <PropertyRef Name="TransactionIdPK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionStatus_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="TransactionStatus">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionStatus_Transactions">
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="1" />
+          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionStatus">
+              <PropertyRef Name="TransactionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Pswd">
+          <End Role="Pswd" Type="Self.Pswd" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pswd">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="pswdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserService_Service">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="UserService" Type="Self.UserService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="UserService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserService_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserService" Type="Self.UserService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserService">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PaymentGatewayModelStoreContainer">
+          <EntitySet Name="PaymentClaim" EntityType="Self.PaymentClaim" Schema="claim" store:Type="Tables" />
+          <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Configurations" EntityType="Self.Configurations" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ModuleCode" EntityType="Self.ModuleCode" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ProductsValidators" EntityType="Self.ProductsValidators" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Services" EntityType="Self.Services" Schema="common" store:Type="Tables" />
+          <EntitySet Name="ServicesConfig" EntityType="Self.ServicesConfig" Schema="common" store:Type="Tables" />
+          <EntitySet Name="VersionLog" EntityType="Self.VersionLog" Schema="common" store:Type="Tables" />
+          <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationConfig" EntityType="Self.NotificationConfig" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="NotificationLog" EntityType="Self.NotificationLog" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="NotificationTemplate" EntityType="Self.NotificationTemplate" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="StatusTemplate" EntityType="Self.StatusTemplate" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="TicketLog" EntityType="Self.TicketLog" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="TransactionTicket" EntityType="Self.TransactionTicket" Schema="notification" store:Type="Tables" />
+          <EntitySet Name="TransactionAdditionalInfo" EntityType="Self.TransactionAdditionalInfo" Schema="payment" store:Type="Tables" />
+          <EntitySet Name="TransactionResultInfo" EntityType="Self.TransactionResultInfo" Schema="payment" store:Type="Tables" />
+          <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" Schema="payment" store:Type="Tables" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" Schema="security" store:Type="Tables" />
+          <EntitySet Name="Pswd" EntityType="Self.Pswd" Schema="security" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="security" store:Type="Tables" />
+          <EntitySet Name="UserService" EntityType="Self.UserService" Schema="security" store:Type="Tables" />
+          <EntitySet Name="CodeMapping" EntityType="Self.CodeMapping" Schema="status" store:Type="Tables" />
+          <EntitySet Name="GenericCode" EntityType="Self.GenericCode" Schema="status" store:Type="Tables" />
+          <EntitySet Name="StatusCode" EntityType="Self.StatusCode" Schema="status" store:Type="Tables" />
+          <EntitySet Name="StatusMessage" EntityType="Self.StatusMessage" Schema="status" store:Type="Tables" />
+          <AssociationSet Name="FK_CodeMapping_ModuleCode" Association="Self.FK_CodeMapping_ModuleCode">
+            <End Role="ModuleCode" EntitySet="ModuleCode" />
+            <End Role="CodeMapping" EntitySet="CodeMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CodeMapping_StatusCode" Association="Self.FK_CodeMapping_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="CodeMapping" EntitySet="CodeMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Configurations_Products" Association="Self.FK_Configurations_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Configurations" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Configurations_Services" Association="Self.FK_Configurations_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Configurations" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleCode_Module" Association="Self.FK_ModuleCode_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModuleCode" EntitySet="ModuleCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationConfig_Services" Association="Self.FK_NotificationConfig_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="NotificationConfig" EntitySet="NotificationConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationConfig_StatusTemplate" Association="Self.FK_NotificationConfig_StatusTemplate">
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+            <End Role="NotificationConfig" EntitySet="NotificationConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationLog_Module" Association="Self.FK_NotificationLog_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="NotificationLog" EntitySet="NotificationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationLog_TicketLog" Association="Self.FK_NotificationLog_TicketLog">
+            <End Role="TicketLog" EntitySet="TicketLog" />
+            <End Role="NotificationLog" EntitySet="NotificationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentClaim_Currency" Association="Self.FK_PaymentClaim_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="PaymentClaim" EntitySet="PaymentClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaymentClaim_Transactions" Association="Self.FK_PaymentClaim_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="PaymentClaim" EntitySet="PaymentClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsValidators_Products" Association="Self.FK_ProductsValidators_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsValidators" EntitySet="ProductsValidators" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesConfig_Services" Association="Self.FK_ServicesConfig_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesConfig" EntitySet="ServicesConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusCode_GenericCode" Association="Self.FK_StatusCode_GenericCode">
+            <End Role="GenericCode" EntitySet="GenericCode" />
+            <End Role="StatusCode" EntitySet="StatusCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusMessage_Language" Association="Self.FK_StatusMessage_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusMessage_StatusCode" Association="Self.FK_StatusMessage_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusTemplate_NotificationTemplate" Association="Self.FK_StatusTemplate_NotificationTemplate">
+            <End Role="NotificationTemplate" EntitySet="NotificationTemplate" />
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusTemplate_StatusCode" Association="Self.FK_StatusTemplate_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Currencies" Association="Self.FK_TransactionAdditionalInfo_Currencies">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Language" Association="Self.FK_TransactionAdditionalInfo_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Products" Association="Self.FK_TransactionAdditionalInfo_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Services" Association="Self.FK_TransactionAdditionalInfo_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Transactions" Association="Self.FK_TransactionAdditionalInfo_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionResultInfo_Transactions" Association="Self.FK_TransactionResultInfo_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionResultInfo" EntitySet="TransactionResultInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionStatus_StatusCode" Association="Self.FK_TransactionStatus_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionStatus_Transactions" Association="Self.FK_TransactionStatus_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Pswd" Association="Self.FK_User_Pswd">
+            <End Role="Pswd" EntitySet="Pswd" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserService_Service" Association="Self.FK_UserService_Service">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="UserService" EntitySet="UserService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserService_User" Association="Self.FK_UserService_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserService" EntitySet="UserService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PaymentGatewayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PaymentClaim">
+          <Key>
+            <PropertyRef Name="PaymentClaimId" />
+          </Key>
+          <Property Name="PaymentClaimId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentClaimNumber" Type="Int64" Nullable="false" />
+          <Property Name="ClaimerId" Type="Int32" />
+          <Property Name="TransactionId" Type="Int64" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Observation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsAutomatic" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Currency" Relationship="PaymentGatewayModel.FK_PaymentClaim_Currency" FromRole="PaymentClaim" ToRole="Currency" />
+          <NavigationProperty Name="Transactions" Relationship="PaymentGatewayModel.FK_PaymentClaim_Transactions" FromRole="PaymentClaim" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="ConfigId" />
+          </Key>
+          <Property Name="ConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Setting" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConfigType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+          <Property Name="ViewOrderInWebAdmin" Type="Int32" />
+          <Property Name="ViewSpecialBackgroundColor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configurations">
+          <Key>
+            <PropertyRef Name="ConfigurationId" />
+          </Key>
+          <Property Name="ConfigurationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ChannelId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ValidatorId" Type="Int32" Nullable="false" />
+          <Property Name="UniqueCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CommerceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Configurations_Products" FromRole="Configurations" ToRole="Products" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_Configurations_Services" FromRole="Configurations" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ISO6391" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="ISO6392" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ISO3166" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NativeName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusMessage" Relationship="Self.FK_StatusMessage_Language" FromRole="Language" ToRole="StatusMessage" />
+          <NavigationProperty Name="TransactionAdditionalInfo" Relationship="Self.FK_TransactionAdditionalInfo_Language" FromRole="Language" ToRole="TransactionAdditionalInfo" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="validatorId" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ModuleCode" Relationship="Self.FK_ModuleCode_Module" FromRole="Module" ToRole="ModuleCode" />
+          <NavigationProperty Name="NotificationLog" Relationship="Self.FK_NotificationLog_Module" FromRole="Module" ToRole="NotificationLog" />
+        </EntityType>
+        <EntityType Name="ModuleCode">
+          <Key>
+            <PropertyRef Name="ModuleCodeId" />
+          </Key>
+          <Property Name="ModuleCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="OriginalCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TechnicalInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_ModuleCode_Module" FromRole="ModuleCode" ToRole="Module" />
+          <NavigationProperty Name="CodeMapping" Relationship="Self.FK_CodeMapping_ModuleCode" FromRole="ModuleCode" ToRole="CodeMapping" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDebit" Type="Boolean" />
+          <NavigationProperty Name="Configurations" Relationship="Self.FK_Configurations_Products" FromRole="Products" ToRole="Configurations" />
+          <NavigationProperty Name="TransactionAdditionalInfo" Relationship="Self.FK_TransactionAdditionalInfo_Products" FromRole="Products" ToRole="TransactionAdditionalInfo" />
+          <NavigationProperty Name="ProductsValidators" Relationship="PaymentGatewayModel.FK_ProductsValidators_Products" FromRole="Products" ToRole="ProductsValidators" />
+        </EntityType>
+        <EntityType Name="Services">
+          <Key>
+            <PropertyRef Name="ServiceId" />
+          </Key>
+          <Property Name="ServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MerchantId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Configurations" Relationship="Self.FK_Configurations_Services" FromRole="Services" ToRole="Configurations" />
+          <NavigationProperty Name="NotificationConfig" Relationship="Self.FK_NotificationConfig_Services" FromRole="Services" ToRole="NotificationConfig" />
+          <NavigationProperty Name="ServicesConfig" Relationship="Self.FK_ServicesConfig_Services" FromRole="Services" ToRole="ServicesConfig" />
+          <NavigationProperty Name="TransactionAdditionalInfo" Relationship="Self.FK_TransactionAdditionalInfo_Services" FromRole="Services" ToRole="TransactionAdditionalInfo" />
+          <NavigationProperty Name="UserService" Relationship="Self.FK_UserService_Service" FromRole="Services" ToRole="UserService" />
+        </EntityType>
+        <EntityType Name="ServicesConfig">
+          <Key>
+            <PropertyRef Name="ServiceConfigId" />
+          </Key>
+          <Property Name="ServiceConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ExternalId" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="TerminalId" Type="Int32" />
+          <Property Name="RptToRendition" Type="Boolean" Nullable="false" />
+          <Property Name="RptToConciliation" Type="Boolean" Nullable="false" />
+          <Property Name="RptToCentralizer" Type="Boolean" Nullable="false" />
+          <Property Name="RenditionType" Type="Int32" Nullable="false" />
+          <Property Name="IsCallbackPosted" Type="Boolean" Nullable="false" />
+          <Property Name="SenderMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SenderURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsCommerceItemValidated" Type="Boolean" Nullable="false" />
+          <Property Name="IsPaymentSecured" Type="Boolean" Nullable="false" />
+          <Property Name="ReportsPath" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="ReportBeginConciliation" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReportBeginCentralizer" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReportBeginRendition" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IncludeBinInExport" Type="Boolean" Nullable="false" />
+          <Property Name="ExcludeFromSPSBatchCloseInPaywayBO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_ServicesConfig_Services" FromRole="ServicesConfig" ToRole="Services" />
+        </EntityType>
+        <EntityType Name="VersionLog">
+          <Key>
+            <PropertyRef Name="VersionLogId" />
+          </Key>
+          <Property Name="VersionLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Major" Type="Int32" Nullable="false" />
+          <Property Name="Minor" Type="Int32" Nullable="false" />
+          <Property Name="Maintenance" Type="Int32" Nullable="false" />
+          <Property Name="Build" Type="Int32" Nullable="false" />
+          <Property Name="Support" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Revision" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deploy" Type="Int32" Nullable="false" />
+          <Property Name="RequestBy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DeployDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="NotificationConfig">
+          <Key>
+            <PropertyRef Name="NotificationConfigId" />
+          </Key>
+          <Property Name="NotificationConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="StatusTemplateId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="AdditionalHeader" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdditionalFooter" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_NotificationConfig_Services" FromRole="NotificationConfig" ToRole="Services" />
+          <NavigationProperty Name="StatusTemplate" Relationship="Self.FK_NotificationConfig_StatusTemplate" FromRole="NotificationConfig" ToRole="StatusTemplate" />
+        </EntityType>
+        <EntityType Name="NotificationLog">
+          <Key>
+            <PropertyRef Name="NotificationLogId" />
+          </Key>
+          <Property Name="NotificationLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="Int32" Nullable="false" />
+          <Property Name="TicketLogId" Type="Int32" />
+          <Property Name="TypeFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlNotification" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Module" Relationship="Self.FK_NotificationLog_Module" FromRole="NotificationLog" ToRole="Module" />
+          <NavigationProperty Name="TicketLog" Relationship="Self.FK_NotificationLog_TicketLog" FromRole="NotificationLog" ToRole="TicketLog" />
+        </EntityType>
+        <EntityType Name="NotificationTemplate">
+          <Key>
+            <PropertyRef Name="NotificationTemplateId" />
+          </Key>
+          <Property Name="NotificationTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateSubject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateBody" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="TemplateTicket" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusTemplate" Relationship="Self.FK_StatusTemplate_NotificationTemplate" FromRole="NotificationTemplate" ToRole="StatusTemplate" />
+        </EntityType>
+        <EntityType Name="StatusTemplate">
+          <Key>
+            <PropertyRef Name="StatusTemplateId" />
+          </Key>
+          <Property Name="StatusTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusCodeId" Type="Int32" />
+          <Property Name="NotificationTemplateId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NotificationConfig" Relationship="Self.FK_NotificationConfig_StatusTemplate" FromRole="StatusTemplate" ToRole="NotificationConfig" />
+          <NavigationProperty Name="NotificationTemplate" Relationship="Self.FK_StatusTemplate_NotificationTemplate" FromRole="StatusTemplate" ToRole="NotificationTemplate" />
+          <NavigationProperty Name="StatusCode" Relationship="Self.FK_StatusTemplate_StatusCode" FromRole="StatusTemplate" ToRole="StatusCode" />
+        </EntityType>
+        <EntityType Name="TicketLog">
+          <Key>
+            <PropertyRef Name="TicketLogId" />
+          </Key>
+          <Property Name="TicketLogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="TypeFormat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HtmlTicket" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NotificationLog" Relationship="Self.FK_NotificationLog_TicketLog" FromRole="TicketLog" ToRole="NotificationLog" />
+        </EntityType>
+        <EntityType Name="TransactionTicket">
+          <Key>
+            <PropertyRef Name="TransactionTicketId" />
+          </Key>
+          <Property Name="TransactionTicketId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionIdPK" Type="Int64" Nullable="false" />
+          <Property Name="StatusTemplateId" Type="Int32" Nullable="false" />
+          <Property Name="TicketNumber" Type="Int64" Nullable="false" />
+          <Property Name="EmailSent" Type="Boolean" Nullable="false" />
+          <Property Name="EmailSentDate" Type="DateTime" Precision="3" />
+          <Property Name="SentBySync" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TransactionAdditionalInfo">
+          <Key>
+            <PropertyRef Name="TransactionAdditionalInfoId" />
+          </Key>
+          <Property Name="TransactionAdditionalInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionIdPK" Type="Int64" Nullable="false" />
+          <Property Name="VersionUsed" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerMail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="ValidatorId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="ExternalApp" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ChannelId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="MerchantId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UniqueCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Payments" Type="Int32" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CallbackUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsEPCValidated" Type="Boolean" />
+          <Property Name="EPCValidateURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ProdVersionUsed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsCommerceItemValidated" Type="Boolean" Nullable="false" />
+          <Property Name="IsSimulation" Type="Boolean" Nullable="false" />
+          <Property Name="TransactionNumber" Type="Int64" Nullable="false" />
+          <Property Name="WasTimeOutForced" Type="Boolean" Nullable="false" />
+          <Property Name="WasSyncByJob" Type="Boolean" Nullable="false" />
+          <Property Name="ReportDateConciliation" Type="DateTime" Precision="3" />
+          <Property Name="ReportDateCentralizer" Type="DateTime" Precision="3" />
+          <Property Name="ReportDateRendition" Type="DateTime" Precision="3" />
+          <Property Name="AuthorizationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardMask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolder" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BatchNbr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SynchronizationDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchSPSDate" Type="DateTime" Precision="3" />
+          <Property Name="LastStatus" Type="Int32" Nullable="false" />
+          <Property Name="ConfirmedByAutoBackOffice" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmedByManualSupportOn" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmedByManualSupportBy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="OriginalReason" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_TransactionAdditionalInfo_Language" FromRole="TransactionAdditionalInfo" ToRole="Language" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_TransactionAdditionalInfo_Products" FromRole="TransactionAdditionalInfo" ToRole="Products" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_TransactionAdditionalInfo_Services" FromRole="TransactionAdditionalInfo" ToRole="Services" />
+          <NavigationProperty Name="Currency" Relationship="PaymentGatewayModel.FK_TransactionAdditionalInfo_Currencies" FromRole="TransactionAdditionalInfo" ToRole="Currency" />
+          <NavigationProperty Name="Transactions" Relationship="PaymentGatewayModel.FK_TransactionAdditionalInfo_Transactions" FromRole="TransactionAdditionalInfo" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="TransactionResultInfo">
+          <Key>
+            <PropertyRef Name="TransactionResultInfoId" />
+          </Key>
+          <Property Name="TransactionResultInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionIdPK" Type="Int64" Nullable="false" />
+          <Property Name="ResponseCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StateMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StateExtendedMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int64" />
+          <Property Name="Payments" Type="Int32" />
+          <Property Name="Currency" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="AuthorizationCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardMask" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardNbrLfd" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolder" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDocType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerDocNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BatchNbr" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SynchronizationDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchSPSDate" Type="DateTime" Precision="3" />
+          <Property Name="MailSynchronizationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Transactions" Relationship="PaymentGatewayModel.FK_TransactionResultInfo_Transactions" FromRole="TransactionResultInfo" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="TransactionStatus">
+          <Key>
+            <PropertyRef Name="TransactionStatusId" />
+          </Key>
+          <Property Name="TransactionStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionsId" Type="Int64" Nullable="false" />
+          <Property Name="StatusCodeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActual" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="StatusCode" Relationship="Self.FK_TransactionStatus_StatusCode" FromRole="TransactionStatus" ToRole="StatusCode" />
+          <NavigationProperty Name="Transactions" Relationship="PaymentGatewayModel.FK_TransactionStatus_Transactions" FromRole="TransactionStatus" ToRole="Transactions" />
+        </EntityType>
+        <EntityType Name="Logs">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Thread" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InnerException" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Transaction" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="createdBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="createdOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pswd">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pswd1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Pswd" FromRole="Pswd" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pswdId" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Pswd" Relationship="Self.FK_User_Pswd" FromRole="User" ToRole="Pswd" />
+          <NavigationProperty Name="UserService" Relationship="Self.FK_UserService_User" FromRole="User" ToRole="UserService" />
+        </EntityType>
+        <EntityType Name="UserService">
+          <Key>
+            <PropertyRef Name="UserServiceId" />
+          </Key>
+          <Property Name="UserServiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ServiceId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Services" Relationship="Self.FK_UserService_Service" FromRole="UserService" ToRole="Services" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserService_User" FromRole="UserService" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CodeMapping">
+          <Key>
+            <PropertyRef Name="CodeMappingId" />
+          </Key>
+          <Property Name="CodeMappingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleCodeId" Type="Int32" Nullable="false" />
+          <Property Name="StatusCodeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ModuleCode" Relationship="Self.FK_CodeMapping_ModuleCode" FromRole="CodeMapping" ToRole="ModuleCode" />
+          <NavigationProperty Name="StatusCode" Relationship="Self.FK_CodeMapping_StatusCode" FromRole="CodeMapping" ToRole="StatusCode" />
+        </EntityType>
+        <EntityType Name="GenericCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusCode" Relationship="Self.FK_StatusCode_GenericCode" FromRole="GenericCode" ToRole="StatusCode" />
+        </EntityType>
+        <EntityType Name="StatusCode">
+          <Key>
+            <PropertyRef Name="StatusCodeId" />
+          </Key>
+          <Property Name="StatusCodeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GenericCodeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StatusTemplate" Relationship="Self.FK_StatusTemplate_StatusCode" FromRole="StatusCode" ToRole="StatusTemplate" />
+          <NavigationProperty Name="TransactionStatus" Relationship="Self.FK_TransactionStatus_StatusCode" FromRole="StatusCode" ToRole="TransactionStatus" />
+          <NavigationProperty Name="CodeMapping" Relationship="Self.FK_CodeMapping_StatusCode" FromRole="StatusCode" ToRole="CodeMapping" />
+          <NavigationProperty Name="GenericCode" Relationship="Self.FK_StatusCode_GenericCode" FromRole="StatusCode" ToRole="GenericCode" />
+          <NavigationProperty Name="StatusMessage" Relationship="Self.FK_StatusMessage_StatusCode" FromRole="StatusCode" ToRole="StatusMessage" />
+        </EntityType>
+        <EntityType Name="StatusMessage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdLanguage" Type="Int32" Nullable="false" />
+          <Property Name="StatusCodeId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_StatusMessage_Language" FromRole="StatusMessage" ToRole="Language" />
+          <NavigationProperty Name="StatusCode" Relationship="Self.FK_StatusMessage_StatusCode" FromRole="StatusMessage" ToRole="StatusCode" />
+        </EntityType>
+        <Association Name="FK_Configurations_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Configurations" Type="Self.Configurations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Configurations">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Configurations_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="Configurations" Type="Self.Configurations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="Configurations">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusMessage_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="StatusMessage" Type="Self.StatusMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StatusMessage">
+              <PropertyRef Name="IdLanguage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleCode_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="ModuleCode" Type="Self.ModuleCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ModuleCode">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationLog_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="NotificationLog" Type="Self.NotificationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationLog">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CodeMapping_ModuleCode">
+          <End Role="ModuleCode" Type="Self.ModuleCode" Multiplicity="1" />
+          <End Role="CodeMapping" Type="Self.CodeMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModuleCode">
+              <PropertyRef Name="ModuleCodeId" />
+            </Principal>
+            <Dependent Role="CodeMapping">
+              <PropertyRef Name="ModuleCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationConfig_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="0..1" />
+          <End Role="NotificationConfig" Type="Self.NotificationConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="NotificationConfig">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicesConfig_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="ServicesConfig" Type="Self.ServicesConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="ServicesConfig">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Services">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="TransactionAdditionalInfo" Type="Self.TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserService_Service">
+          <End Role="Services" Type="Self.Services" Multiplicity="1" />
+          <End Role="UserService" Type="Self.UserService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Services">
+              <PropertyRef Name="ServiceId" />
+            </Principal>
+            <Dependent Role="UserService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationConfig_StatusTemplate">
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="0..1" />
+          <End Role="NotificationConfig" Type="Self.NotificationConfig" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusTemplate">
+              <PropertyRef Name="StatusTemplateId" />
+            </Principal>
+            <Dependent Role="NotificationConfig">
+              <PropertyRef Name="StatusTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NotificationLog_TicketLog">
+          <End Role="TicketLog" Type="Self.TicketLog" Multiplicity="0..1" />
+          <End Role="NotificationLog" Type="Self.NotificationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TicketLog">
+              <PropertyRef Name="TicketLogId" />
+            </Principal>
+            <Dependent Role="NotificationLog">
+              <PropertyRef Name="TicketLogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusTemplate_NotificationTemplate">
+          <End Role="NotificationTemplate" Type="Self.NotificationTemplate" Multiplicity="0..1" />
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTemplate">
+              <PropertyRef Name="NotificationTemplateId" />
+            </Principal>
+            <Dependent Role="StatusTemplate">
+              <PropertyRef Name="NotificationTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusTemplate_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="0..1" />
+          <End Role="StatusTemplate" Type="Self.StatusTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="StatusTemplate">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionStatus_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="TransactionStatus" Type="Self.TransactionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="TransactionStatus">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Pswd">
+          <End Role="Pswd" Type="Self.Pswd" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pswd">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="pswdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserService_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserService" Type="Self.UserService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserService">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CodeMapping_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="CodeMapping" Type="Self.CodeMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="CodeMapping">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusCode_GenericCode">
+          <End Role="GenericCode" Type="Self.GenericCode" Multiplicity="1" />
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GenericCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StatusCode">
+              <PropertyRef Name="GenericCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StatusMessage_StatusCode">
+          <End Role="StatusCode" Type="Self.StatusCode" Multiplicity="1" />
+          <End Role="StatusMessage" Type="Self.StatusMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusCode">
+              <PropertyRef Name="StatusCodeId" />
+            </Principal>
+            <Dependent Role="StatusMessage">
+              <PropertyRef Name="StatusCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PaymentClaim" EntityType="Self.PaymentClaim" />
+          <EntitySet Name="AppConfig" EntityType="Self.AppConfig" />
+          <EntitySet Name="Configurations" EntityType="Self.Configurations" />
+          <EntitySet Name="Language" EntityType="Self.Language" />
+          <EntitySet Name="Module" EntityType="Self.Module" />
+          <EntitySet Name="ModuleCode" EntityType="Self.ModuleCode" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Services" EntityType="Self.Services" />
+          <EntitySet Name="ServicesConfig" EntityType="Self.ServicesConfig" />
+          <EntitySet Name="VersionLog" EntityType="Self.VersionLog" />
+          <EntitySet Name="NotificationConfig" EntityType="Self.NotificationConfig" />
+          <EntitySet Name="NotificationLog" EntityType="Self.NotificationLog" />
+          <EntitySet Name="NotificationTemplate" EntityType="Self.NotificationTemplate" />
+          <EntitySet Name="StatusTemplate" EntityType="Self.StatusTemplate" />
+          <EntitySet Name="TicketLog" EntityType="Self.TicketLog" />
+          <EntitySet Name="TransactionTicket" EntityType="Self.TransactionTicket" />
+          <EntitySet Name="TransactionAdditionalInfo" EntityType="Self.TransactionAdditionalInfo" />
+          <EntitySet Name="TransactionResultInfo" EntityType="Self.TransactionResultInfo" />
+          <EntitySet Name="TransactionStatus" EntityType="Self.TransactionStatus" />
+          <EntitySet Name="Logs" EntityType="Self.Logs" />
+          <EntitySet Name="Pswd" EntityType="Self.Pswd" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserService" EntityType="Self.UserService" />
+          <EntitySet Name="CodeMapping" EntityType="Self.CodeMapping" />
+          <EntitySet Name="GenericCode" EntityType="Self.GenericCode" />
+          <EntitySet Name="StatusCode" EntityType="Self.StatusCode" />
+          <EntitySet Name="StatusMessage" EntityType="Self.StatusMessage" />
+          <AssociationSet Name="FK_Configurations_Products" Association="Self.FK_Configurations_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Configurations" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Configurations_Services" Association="Self.FK_Configurations_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="Configurations" EntitySet="Configurations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusMessage_Language" Association="Self.FK_StatusMessage_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Language" Association="Self.FK_TransactionAdditionalInfo_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleCode_Module" Association="Self.FK_ModuleCode_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="ModuleCode" EntitySet="ModuleCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationLog_Module" Association="Self.FK_NotificationLog_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="NotificationLog" EntitySet="NotificationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CodeMapping_ModuleCode" Association="Self.FK_CodeMapping_ModuleCode">
+            <End Role="ModuleCode" EntitySet="ModuleCode" />
+            <End Role="CodeMapping" EntitySet="CodeMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Products" Association="Self.FK_TransactionAdditionalInfo_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationConfig_Services" Association="Self.FK_NotificationConfig_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="NotificationConfig" EntitySet="NotificationConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicesConfig_Services" Association="Self.FK_ServicesConfig_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="ServicesConfig" EntitySet="ServicesConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Services" Association="Self.FK_TransactionAdditionalInfo_Services">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserService_Service" Association="Self.FK_UserService_Service">
+            <End Role="Services" EntitySet="Services" />
+            <End Role="UserService" EntitySet="UserService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationConfig_StatusTemplate" Association="Self.FK_NotificationConfig_StatusTemplate">
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+            <End Role="NotificationConfig" EntitySet="NotificationConfig" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NotificationLog_TicketLog" Association="Self.FK_NotificationLog_TicketLog">
+            <End Role="TicketLog" EntitySet="TicketLog" />
+            <End Role="NotificationLog" EntitySet="NotificationLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusTemplate_NotificationTemplate" Association="Self.FK_StatusTemplate_NotificationTemplate">
+            <End Role="NotificationTemplate" EntitySet="NotificationTemplate" />
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusTemplate_StatusCode" Association="Self.FK_StatusTemplate_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="StatusTemplate" EntitySet="StatusTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionStatus_StatusCode" Association="Self.FK_TransactionStatus_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Pswd" Association="Self.FK_User_Pswd">
+            <End Role="Pswd" EntitySet="Pswd" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserService_User" Association="Self.FK_UserService_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserService" EntitySet="UserService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CodeMapping_StatusCode" Association="Self.FK_CodeMapping_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="CodeMapping" EntitySet="CodeMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusCode_GenericCode" Association="Self.FK_StatusCode_GenericCode">
+            <End Role="GenericCode" EntitySet="GenericCode" />
+            <End Role="StatusCode" EntitySet="StatusCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StatusMessage_StatusCode" Association="Self.FK_StatusMessage_StatusCode">
+            <End Role="StatusCode" EntitySet="StatusCode" />
+            <End Role="StatusMessage" EntitySet="StatusMessage" />
+          </AssociationSet>
+          <EntitySet Name="Currency" EntityType="PaymentGatewayModel.Currency" />
+          <AssociationSet Name="FK_PaymentClaim_Currency" Association="PaymentGatewayModel.FK_PaymentClaim_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="PaymentClaim" EntitySet="PaymentClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Currencies" Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Currencies">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <EntitySet Name="Transactions" EntityType="PaymentGatewayModel.Transactions" />
+          <AssociationSet Name="FK_PaymentClaim_Transactions" Association="PaymentGatewayModel.FK_PaymentClaim_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="PaymentClaim" EntitySet="PaymentClaim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionAdditionalInfo_Transactions" Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionAdditionalInfo" EntitySet="TransactionAdditionalInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionResultInfo_Transactions" Association="PaymentGatewayModel.FK_TransactionResultInfo_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionResultInfo" EntitySet="TransactionResultInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransactionStatus_Transactions" Association="PaymentGatewayModel.FK_TransactionStatus_Transactions">
+            <End Role="Transactions" EntitySet="Transactions" />
+            <End Role="TransactionStatus" EntitySet="TransactionStatus" />
+          </AssociationSet>
+          <EntitySet Name="ProductsValidators" EntityType="PaymentGatewayModel.ProductsValidators" />
+          <AssociationSet Name="FK_ProductsValidators_Products" Association="PaymentGatewayModel.FK_ProductsValidators_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductsValidators" EntitySet="ProductsValidators" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsoCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PaymentClaim" Relationship="PaymentGatewayModel.FK_PaymentClaim_Currency" FromRole="Currency" ToRole="PaymentClaim" />
+          <NavigationProperty Name="TransactionAdditionalInfo" Relationship="PaymentGatewayModel.FK_TransactionAdditionalInfo_Currencies" FromRole="Currency" ToRole="TransactionAdditionalInfo" />
+        </EntityType>
+        <Association Name="FK_PaymentClaim_Currency">
+          <End Type="PaymentGatewayModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="PaymentGatewayModel.PaymentClaim" Role="PaymentClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="PaymentClaim">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Currencies">
+          <End Type="PaymentGatewayModel.Currency" Role="Currency" Multiplicity="1" />
+          <End Type="PaymentGatewayModel.TransactionAdditionalInfo" Role="TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Transactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InternalNbr" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Channel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Client" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalePoint" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Service" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Validator" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSvcMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JSonObject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SettingId" Type="Int32" Nullable="false" />
+          <Property Name="MerchantId" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ElectronicPaymentCode" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TrxCurrencyCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TrxAmount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ConvertionRate" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="PaymentClaim" Relationship="PaymentGatewayModel.FK_PaymentClaim_Transactions" FromRole="Transactions" ToRole="PaymentClaim" />
+          <NavigationProperty Name="TransactionAdditionalInfo" Relationship="PaymentGatewayModel.FK_TransactionAdditionalInfo_Transactions" FromRole="Transactions" ToRole="TransactionAdditionalInfo" />
+          <NavigationProperty Name="TransactionResultInfo" Relationship="PaymentGatewayModel.FK_TransactionResultInfo_Transactions" FromRole="Transactions" ToRole="TransactionResultInfo" />
+          <NavigationProperty Name="TransactionStatus" Relationship="PaymentGatewayModel.FK_TransactionStatus_Transactions" FromRole="Transactions" ToRole="TransactionStatus" />
+        </EntityType>
+        <Association Name="FK_PaymentClaim_Transactions">
+          <End Type="PaymentGatewayModel.Transactions" Role="Transactions" Multiplicity="0..1" />
+          <End Type="PaymentGatewayModel.PaymentClaim" Role="PaymentClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PaymentClaim">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionAdditionalInfo_Transactions">
+          <End Type="PaymentGatewayModel.Transactions" Role="Transactions" Multiplicity="1" />
+          <End Type="PaymentGatewayModel.TransactionAdditionalInfo" Role="TransactionAdditionalInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionAdditionalInfo">
+              <PropertyRef Name="TransactionIdPK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionResultInfo_Transactions">
+          <End Type="PaymentGatewayModel.Transactions" Role="Transactions" Multiplicity="1" />
+          <End Type="PaymentGatewayModel.TransactionResultInfo" Role="TransactionResultInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionResultInfo">
+              <PropertyRef Name="TransactionIdPK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionStatus_Transactions">
+          <End Type="PaymentGatewayModel.Transactions" Role="Transactions" Multiplicity="1" />
+          <End Type="PaymentGatewayModel.TransactionStatus" Role="TransactionStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transactions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TransactionStatus">
+              <PropertyRef Name="TransactionsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductsValidators">
+          <Key>
+            <PropertyRef Name="ProductValidatorId" />
+          </Key>
+          <Property Name="ProductValidatorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ValidatorId" Type="Int32" Nullable="false" />
+          <Property Name="CardCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="PaymentGatewayModel.FK_ProductsValidators_Products" FromRole="ProductsValidators" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_ProductsValidators_Products">
+          <End Type="PaymentGatewayModel.Products" Role="Products" Multiplicity="1" />
+          <End Type="PaymentGatewayModel.ProductsValidators" Role="ProductsValidators" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductsValidators">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PaymentGatewayModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="PaymentClaim">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.PaymentClaim">
+              <MappingFragment StoreEntitySet="PaymentClaim">
+                <ScalarProperty Name="PaymentClaimId" ColumnName="PaymentClaimId" />
+                <ScalarProperty Name="PaymentClaimNumber" ColumnName="PaymentClaimNumber" />
+                <ScalarProperty Name="ClaimerId" ColumnName="ClaimerId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Observation" ColumnName="Observation" />
+                <ScalarProperty Name="IsAutomatic" ColumnName="IsAutomatic" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppConfig">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.AppConfig">
+              <MappingFragment StoreEntitySet="AppConfig">
+                <ScalarProperty Name="ConfigId" ColumnName="ConfigId" />
+                <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ConfigType" ColumnName="ConfigType" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="DeleteTime" ColumnName="DeleteTime" />
+                <ScalarProperty Name="ViewOrderInWebAdmin" ColumnName="ViewOrderInWebAdmin" />
+                <ScalarProperty Name="ViewSpecialBackgroundColor" ColumnName="ViewSpecialBackgroundColor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configurations">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Configurations">
+              <MappingFragment StoreEntitySet="Configurations">
+                <ScalarProperty Name="ConfigurationId" ColumnName="ConfigurationId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ValidatorId" ColumnName="ValidatorId" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+                <ScalarProperty Name="CommerceNumber" ColumnName="CommerceNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ISO6391" ColumnName="ISO6391" />
+                <ScalarProperty Name="ISO6392" ColumnName="ISO6392" />
+                <ScalarProperty Name="ISO3166" ColumnName="ISO3166" />
+                <ScalarProperty Name="NativeName" ColumnName="NativeName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="validatorId" ColumnName="validatorId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModuleCode">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.ModuleCode">
+              <MappingFragment StoreEntitySet="ModuleCode">
+                <ScalarProperty Name="ModuleCodeId" ColumnName="ModuleCodeId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="OriginalCode" ColumnName="OriginalCode" />
+                <ScalarProperty Name="TechnicalInfo" ColumnName="TechnicalInfo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsDebit" ColumnName="IsDebit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Services">
+              <MappingFragment StoreEntitySet="Services">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicesConfig">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.ServicesConfig">
+              <MappingFragment StoreEntitySet="ServicesConfig">
+                <ScalarProperty Name="ServiceConfigId" ColumnName="ServiceConfigId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ExternalId" ColumnName="ExternalId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="TerminalId" ColumnName="TerminalId" />
+                <ScalarProperty Name="RptToRendition" ColumnName="RptToRendition" />
+                <ScalarProperty Name="RptToConciliation" ColumnName="RptToConciliation" />
+                <ScalarProperty Name="RptToCentralizer" ColumnName="RptToCentralizer" />
+                <ScalarProperty Name="RenditionType" ColumnName="RenditionType" />
+                <ScalarProperty Name="IsCallbackPosted" ColumnName="IsCallbackPosted" />
+                <ScalarProperty Name="SenderMail" ColumnName="SenderMail" />
+                <ScalarProperty Name="SenderURL" ColumnName="SenderURL" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsCommerceItemValidated" ColumnName="IsCommerceItemValidated" />
+                <ScalarProperty Name="IsPaymentSecured" ColumnName="IsPaymentSecured" />
+                <ScalarProperty Name="ReportsPath" ColumnName="ReportsPath" />
+                <ScalarProperty Name="ReportBeginConciliation" ColumnName="ReportBeginConciliation" />
+                <ScalarProperty Name="ReportBeginCentralizer" ColumnName="ReportBeginCentralizer" />
+                <ScalarProperty Name="ReportBeginRendition" ColumnName="ReportBeginRendition" />
+                <ScalarProperty Name="IncludeBinInExport" ColumnName="IncludeBinInExport" />
+                <ScalarProperty Name="ExcludeFromSPSBatchCloseInPaywayBO" ColumnName="ExcludeFromSPSBatchCloseInPaywayBO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionLog">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.VersionLog">
+              <MappingFragment StoreEntitySet="VersionLog">
+                <ScalarProperty Name="VersionLogId" ColumnName="VersionLogId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Minor" ColumnName="Minor" />
+                <ScalarProperty Name="Maintenance" ColumnName="Maintenance" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Support" ColumnName="Support" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="Deploy" ColumnName="Deploy" />
+                <ScalarProperty Name="RequestBy" ColumnName="RequestBy" />
+                <ScalarProperty Name="DeployDate" ColumnName="DeployDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationConfig">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.NotificationConfig">
+              <MappingFragment StoreEntitySet="NotificationConfig">
+                <ScalarProperty Name="NotificationConfigId" ColumnName="NotificationConfigId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="StatusTemplateId" ColumnName="StatusTemplateId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="AdditionalHeader" ColumnName="AdditionalHeader" />
+                <ScalarProperty Name="AdditionalFooter" ColumnName="AdditionalFooter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationLog">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.NotificationLog">
+              <MappingFragment StoreEntitySet="NotificationLog">
+                <ScalarProperty Name="NotificationLogId" ColumnName="NotificationLogId" />
+                <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+                <ScalarProperty Name="TicketLogId" ColumnName="TicketLogId" />
+                <ScalarProperty Name="TypeFormat" ColumnName="TypeFormat" />
+                <ScalarProperty Name="HtmlNotification" ColumnName="HtmlNotification" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationTemplate">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.NotificationTemplate">
+              <MappingFragment StoreEntitySet="NotificationTemplate">
+                <ScalarProperty Name="NotificationTemplateId" ColumnName="NotificationTemplateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TemplateSubject" ColumnName="TemplateSubject" />
+                <ScalarProperty Name="TemplateBody" ColumnName="TemplateBody" />
+                <ScalarProperty Name="TemplateTicket" ColumnName="TemplateTicket" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusTemplate">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.StatusTemplate">
+              <MappingFragment StoreEntitySet="StatusTemplate">
+                <ScalarProperty Name="StatusTemplateId" ColumnName="StatusTemplateId" />
+                <ScalarProperty Name="StatusCodeId" ColumnName="StatusCodeId" />
+                <ScalarProperty Name="NotificationTemplateId" ColumnName="NotificationTemplateId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketLog">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.TicketLog">
+              <MappingFragment StoreEntitySet="TicketLog">
+                <ScalarProperty Name="TicketLogId" ColumnName="TicketLogId" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="TypeFormat" ColumnName="TypeFormat" />
+                <ScalarProperty Name="HtmlTicket" ColumnName="HtmlTicket" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTicket">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.TransactionTicket">
+              <MappingFragment StoreEntitySet="TransactionTicket">
+                <ScalarProperty Name="TransactionTicketId" ColumnName="TransactionTicketId" />
+                <ScalarProperty Name="TransactionIdPK" ColumnName="TransactionIdPK" />
+                <ScalarProperty Name="StatusTemplateId" ColumnName="StatusTemplateId" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="EmailSentDate" ColumnName="EmailSentDate" />
+                <ScalarProperty Name="SentBySync" ColumnName="SentBySync" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionAdditionalInfo">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.TransactionAdditionalInfo">
+              <MappingFragment StoreEntitySet="TransactionAdditionalInfo">
+                <ScalarProperty Name="TransactionAdditionalInfoId" ColumnName="TransactionAdditionalInfoId" />
+                <ScalarProperty Name="TransactionIdPK" ColumnName="TransactionIdPK" />
+                <ScalarProperty Name="VersionUsed" ColumnName="VersionUsed" />
+                <ScalarProperty Name="CustomerMail" ColumnName="CustomerMail" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="ValidatorId" ColumnName="ValidatorId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ExternalApp" ColumnName="ExternalApp" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+                <ScalarProperty Name="UniqueCode" ColumnName="UniqueCode" />
+                <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="CallbackUrl" ColumnName="CallbackUrl" />
+                <ScalarProperty Name="IsEPCValidated" ColumnName="IsEPCValidated" />
+                <ScalarProperty Name="EPCValidateURL" ColumnName="EPCValidateURL" />
+                <ScalarProperty Name="CurrentAmount" ColumnName="CurrentAmount" />
+                <ScalarProperty Name="ProdVersionUsed" ColumnName="ProdVersionUsed" />
+                <ScalarProperty Name="IsCommerceItemValidated" ColumnName="IsCommerceItemValidated" />
+                <ScalarProperty Name="IsSimulation" ColumnName="IsSimulation" />
+                <ScalarProperty Name="TransactionNumber" ColumnName="TransactionNumber" />
+                <ScalarProperty Name="WasTimeOutForced" ColumnName="WasTimeOutForced" />
+                <ScalarProperty Name="WasSyncByJob" ColumnName="WasSyncByJob" />
+                <ScalarProperty Name="ReportDateConciliation" ColumnName="ReportDateConciliation" />
+                <ScalarProperty Name="ReportDateCentralizer" ColumnName="ReportDateCentralizer" />
+                <ScalarProperty Name="ReportDateRendition" ColumnName="ReportDateRendition" />
+                <ScalarProperty Name="AuthorizationCode" ColumnName="AuthorizationCode" />
+                <ScalarProperty Name="CardMask" ColumnName="CardMask" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="BatchNbr" ColumnName="BatchNbr" />
+                <ScalarProperty Name="SynchronizationDate" ColumnName="SynchronizationDate" />
+                <ScalarProperty Name="BatchSPSDate" ColumnName="BatchSPSDate" />
+                <ScalarProperty Name="LastStatus" ColumnName="LastStatus" />
+                <ScalarProperty Name="ConfirmedByAutoBackOffice" ColumnName="ConfirmedByAutoBackOffice" />
+                <ScalarProperty Name="ConfirmedByManualSupportOn" ColumnName="ConfirmedByManualSupportOn" />
+                <ScalarProperty Name="ConfirmedByManualSupportBy" ColumnName="ConfirmedByManualSupportBy" />
+                <ScalarProperty Name="OriginalReason" ColumnName="OriginalReason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionResultInfo">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.TransactionResultInfo">
+              <MappingFragment StoreEntitySet="TransactionResultInfo">
+                <ScalarProperty Name="TransactionResultInfoId" ColumnName="TransactionResultInfoId" />
+                <ScalarProperty Name="TransactionIdPK" ColumnName="TransactionIdPK" />
+                <ScalarProperty Name="ResponseCode" ColumnName="ResponseCode" />
+                <ScalarProperty Name="StateMessage" ColumnName="StateMessage" />
+                <ScalarProperty Name="StateExtendedMessage" ColumnName="StateExtendedMessage" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Payments" ColumnName="Payments" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AuthorizationCode" ColumnName="AuthorizationCode" />
+                <ScalarProperty Name="CardMask" ColumnName="CardMask" />
+                <ScalarProperty Name="CardNbrLfd" ColumnName="CardNbrLfd" />
+                <ScalarProperty Name="CardHolder" ColumnName="CardHolder" />
+                <ScalarProperty Name="CustomerDocType" ColumnName="CustomerDocType" />
+                <ScalarProperty Name="CustomerDocNumber" ColumnName="CustomerDocNumber" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="BatchNbr" ColumnName="BatchNbr" />
+                <ScalarProperty Name="SynchronizationDate" ColumnName="SynchronizationDate" />
+                <ScalarProperty Name="BatchSPSDate" ColumnName="BatchSPSDate" />
+                <ScalarProperty Name="MailSynchronizationDate" ColumnName="MailSynchronizationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionStatus">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.TransactionStatus">
+              <MappingFragment StoreEntitySet="TransactionStatus">
+                <ScalarProperty Name="TransactionStatusId" ColumnName="TransactionStatusId" />
+                <ScalarProperty Name="TransactionsId" ColumnName="TransactionsId" />
+                <ScalarProperty Name="StatusCodeId" ColumnName="StatusCodeId" />
+                <ScalarProperty Name="IsActual" ColumnName="IsActual" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Logs">
+              <MappingFragment StoreEntitySet="Logs">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="Transaction" ColumnName="Transaction" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="createdOn" ColumnName="createdOn" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pswd">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Pswd">
+              <MappingFragment StoreEntitySet="Pswd">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="pswd1" ColumnName="pswd" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="pswdId" ColumnName="pswdId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserService">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.UserService">
+              <MappingFragment StoreEntitySet="UserService">
+                <ScalarProperty Name="UserServiceId" ColumnName="UserServiceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodeMapping">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.CodeMapping">
+              <MappingFragment StoreEntitySet="CodeMapping">
+                <ScalarProperty Name="CodeMappingId" ColumnName="CodeMappingId" />
+                <ScalarProperty Name="ModuleCodeId" ColumnName="ModuleCodeId" />
+                <ScalarProperty Name="StatusCodeId" ColumnName="StatusCodeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GenericCode">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.GenericCode">
+              <MappingFragment StoreEntitySet="GenericCode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusCode">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.StatusCode">
+              <MappingFragment StoreEntitySet="StatusCode">
+                <ScalarProperty Name="StatusCodeId" ColumnName="StatusCodeId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="GenericCodeId" ColumnName="GenericCodeId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusMessage">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.StatusMessage">
+              <MappingFragment StoreEntitySet="StatusMessage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdLanguage" ColumnName="IdLanguage" />
+                <ScalarProperty Name="StatusCodeId" ColumnName="StatusCodeId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.Transactions">
+              <MappingFragment StoreEntitySet="Transactions">
+                <ScalarProperty Name="ConvertionRate" ColumnName="ConvertionRate" />
+                <ScalarProperty Name="TrxAmount" ColumnName="TrxAmount" />
+                <ScalarProperty Name="TrxCurrencyCode" ColumnName="TrxCurrencyCode" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="ElectronicPaymentCode" ColumnName="ElectronicPaymentCode" />
+                <ScalarProperty Name="MerchantId" ColumnName="MerchantId" />
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="JSonObject" ColumnName="JSonObject" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="WebSvcMethod" ColumnName="WebSvcMethod" />
+                <ScalarProperty Name="Validator" ColumnName="Validator" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="SalePoint" ColumnName="SalePoint" />
+                <ScalarProperty Name="Client" ColumnName="Client" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="InternalNbr" ColumnName="InternalNbr" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductsValidators">
+            <EntityTypeMapping TypeName="PaymentGatewayModel.ProductsValidators">
+              <MappingFragment StoreEntitySet="ProductsValidators">
+                <ScalarProperty Name="CardCode" ColumnName="CardCode" />
+                <ScalarProperty Name="ValidatorId" ColumnName="ValidatorId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductValidatorId" ColumnName="ProductValidatorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

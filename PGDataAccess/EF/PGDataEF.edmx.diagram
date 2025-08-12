@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f61daba0ebcd49328d93e761625b9b4c" Name="Diagram1" ZoomLevel="85">
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentResultInfo_Validators1" />
+        <EntityTypeShape EntityType="PgEntitiesModel.AnnulmentJobLog" Width="1.5" PointX="13.5" PointY="35.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.AnnulmentRequest" Width="1.5" PointX="11.25" PointY="38.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.AnnulmentResultInfo" Width="1.5" PointX="3" PointY="36.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.AnnulmentValidatorComm" Width="1.5" PointX="13.5" PointY="39.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Claimer" Width="1.5" PointX="6.75" PointY="44.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CommerceItemClaim" Width="1.5" PointX="11.25" PointY="30" />
+        <EntityTypeShape EntityType="PgEntitiesModel.PaymentClaim" Width="1.5" PointX="9" PointY="31" />
+        <EntityTypeShape EntityType="PgEntitiesModel.PaymentClaimStatus" Width="1.5" PointX="11.25" PointY="33.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.AppConfig" Width="1.5" PointX="5.75" PointY="11.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CarpendiProccess" Width="1.5" PointX="0.75" PointY="16.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CarpendiStats" Width="1.5" PointX="0.75" PointY="20.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Channels" Width="1.5" PointX="3.75" PointY="18.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Clients" Width="1.5" PointX="3.75" PointY="49.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Configurations" Width="1.5" PointX="9" PointY="48.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Currency" Width="1.5" PointX="6.75" PointY="22.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.DocType" Width="1.5" PointX="4.5" PointY="45.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ExternalApp" Width="1.5" PointX="8.75" PointY="24.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.JobRunLog" Width="1.5" PointX="11.25" PointY="43.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Language" Width="1.5" PointX="3.75" PointY="22.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Module" Width="1.5" PointX="9.75" PointY="6.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ModuleCode" Width="1.5" PointX="12" PointY="5.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorFilesReportProcess" Width="1.5" PointX="10.75" PointY="24.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorFilesReportRecords" Width="1.5" PointX="23.75" PointY="13.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorPaywayBackOfficeTransactions" Width="1.5" PointX="23.75" PointY="30.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorSPSBatchProcess" Width="1.5" PointX="25.75" PointY="12.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorSPSBatchProcessFiles" Width="1.5" PointX="25.75" PointY="17.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorSPSBatchProcessTransactions" Width="1.5" PointX="25.75" PointY="30.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorSyncroProcess" Width="1.5" PointX="27.75" PointY="6.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.MonitorSyncroProcessRecords" Width="1.5" PointX="27.75" PointY="12.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ProductCarpendi" Width="1.5" PointX="5.75" PointY="15.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ProductCentralizer" Width="1.5" PointX="27.75" PointY="17.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Products" Width="1.5" PointX="3.75" PointY="72.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ProductSPSBatch" Width="1.5" PointX="27.75" PointY="21.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ProductsValidators" Width="1.5" PointX="6" PointY="71.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Rol" Width="1.5" PointX="3" PointY="13.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Services" Width="1.5" PointX="3.75" PointY="53.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ServicesConfig" Width="1.5" PointX="6" PointY="52.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Validators" Width="1.5" PointX="3.75" PointY="68.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.VersionLog" Width="1.5" PointX="27.75" PointY="30.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Banks" Width="1.5" PointX="28.75" PointY="25.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ClaimOperations" Width="1.5" PointX="21.25" PointY="8.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Claims" Width="1.5" PointX="19" PointY="6.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ClaimStatus" Width="1.5" PointX="16.75" PointY="8.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ClaimTypes" Width="1.5" PointX="16.75" PointY="4.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ConfigurationDefaultValues" Width="1.5" PointX="16.25" PointY="14.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ConfigurationDetails" Width="1.5" PointX="14" PointY="9" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Countries" Width="1.5" PointX="27.75" PointY="34.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Currencies" Width="1.5" PointX="29.75" PointY="6.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CustomMessages" Width="1.5" PointX="13.75" PointY="28.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.DocumentTypes" Width="1.5" PointX="16.75" PointY="18.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Languages" Width="1.5" PointX="29.75" PointY="10.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NpsServiceRequests" Width="1.5" PointX="18.75" PointY="14.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NpsServiceResponseQueryTrxs" Width="1.5" PointX="23.25" PointY="16.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NpsServiceResponses" Width="1.5" PointX="21" PointY="15.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Refunds" Width="1.5" PointX="23.5" PointY="7" />
+        <EntityTypeShape EntityType="PgEntitiesModel.RefundsRecords" Width="1.5" PointX="25.75" PointY="8.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SalePoints" Width="1.5" PointX="23.75" PointY="26.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SalePointServices" Width="1.5" PointX="26" PointY="27" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ServiceChannels" Width="1.5" PointX="12.75" PointY="26.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ServiceProducts" Width="1.5" PointX="29.75" PointY="15.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SpsBatch" Width="1.5" PointX="29.75" PointY="18.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SpsServiceRequests" Width="1.5" PointX="18.75" PointY="31.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SpsServiceResponses" Width="1.5" PointX="21" PointY="28.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.StatusSvcLogs" Width="1.5" PointX="29.75" PointY="29.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Transactions" Width="1.5" PointX="0.75" PointY="30.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ValidatorMessages" Width="1.5" PointX="16" PointY="28.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.WebSvcMethodParams" Width="1.5" PointX="14" PointY="18.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.WebSvcMethods" Width="1.5" PointX="11.75" PointY="11.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NotificationConfig" Width="1.5" PointX="16.5" PointY="35.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NotificationLog" Width="1.5" PointX="12" PointY="0.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.NotificationTemplate" Width="1.5" PointX="9" PointY="13.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.StatusTemplate" Width="1.5" PointX="11.25" PointY="16.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.TicketLog" Width="1.5" PointX="9.75" PointY="53.5" />
+        <EntityTypeShape EntityType="PgEntitiesModel.TransactionTicket" Width="1.5" PointX="23.75" PointY="35.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CommerceItems" Width="1.5" PointX="3" PointY="26.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.PaymentValidatorComm" Width="1.5" PointX="3" PointY="64.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ReportJobLog" Width="1.5" PointX="5.25" PointY="27.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.TransactionAdditionalInfo" Width="1.5" PointX="6" PointY="32" />
+        <EntityTypeShape EntityType="PgEntitiesModel.TransactionResultInfo" Width="1.5" PointX="3" PointY="58.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.TransactionStatus" Width="1.5" PointX="3" PointY="32.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Logs" Width="1.5" PointX="29.75" PointY="32.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Pswd" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.User" Width="1.5" PointX="3" PointY="7.75" />
+        <EntityTypeShape EntityType="PgEntitiesModel.UserActivity" Width="1.5" PointX="30.75" PointY="24.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.UserRol" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="PgEntitiesModel.UserService" Width="1.5" PointX="8" PointY="27.625" />
+        <EntityTypeShape EntityType="PgEntitiesModel.ValidatorServiceConfig" Width="1.5" PointX="6" PointY="61.375" />
+        <EntityTypeShape EntityType="PgEntitiesModel.CodeMapping" Width="1.5" PointX="14.25" PointY="22.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.GenericCode" Width="1.5" PointX="6.75" PointY="18.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.StatusCode" Width="1.5" PointX="9" PointY="17.875" />
+        <EntityTypeShape EntityType="PgEntitiesModel.StatusMessage" Width="1.5" PointX="11.25" PointY="20.125" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Configurations_BK_06_06" Width="1.5" PointX="29.75" PointY="36.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Configurations_BK_26_06" Width="1.5" PointX="31.75" PointY="6.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Configurations_BK_27_06" Width="1.5" PointX="31.75" PointY="11.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.SpsBatchTemporalValidation" Width="1.5" PointX="31.75" PointY="16.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.Versions" Width="1.5" PointX="2.75" PointY="16.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.GetPrismaCodes" Width="1.5" PointX="31.75" PointY="19.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.vwGetPaymentTicketInfo" Width="1.5" PointX="31.75" PointY="27.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.vwNpsServiceTransactions" Width="1.5" PointX="31.75" PointY="32.25" />
+        <EntityTypeShape EntityType="PgEntitiesModel.vwNpsServiceTransactionsAAA" Width="1.5" PointX="25.75" PointY="38.25" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentJobLog_AnnulmentRequest" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentJobLog_JobRunLog" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentJobLog_PaymentClaim" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentRequest_PaymentClaim" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentValidatorComm_AnnulmentRequest" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentResultInfo_PaymentClaim" />
+        <AssociationConnector Association="PgEntitiesModel.FK_AnnulmentResultInfo_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Claimer_DocType" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentClaim_Claimer" />
+        <AssociationConnector Association="PgEntitiesModel.FK_CommerceItemClaim_CommerceItems" />
+        <AssociationConnector Association="PgEntitiesModel.FK_CommerceItemClaim_PaymentClaim" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentClaim_Currency" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentClaim_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentClaimStatus_PaymentClaim" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentClaimStatus_StatusCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Configurations_Channels" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Channels" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Services_Clients" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Clients" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Configurations_Products" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Configurations_Services" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Configurations_Validators" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Currencies" />
+        <AssociationConnector Association="PgEntitiesModel.FK_StatusMessage_Language" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Language" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ModuleCode_Module" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NotificationLog_Module" />
+        <AssociationConnector Association="PgEntitiesModel.FK_CodeMapping_ModuleCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ProductsValidators_Products" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Products" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ProductsValidators_Validators" />
+        <AssociationConnector Association="PgEntitiesModel.FK_UserRol_Rol" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NotificationConfig_Services" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ServicesConfig_Services" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Services" />
+        <AssociationConnector Association="PgEntitiesModel.FK_UserService_Service" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ValidatorServiceConfig_Services" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Validators" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ValidatorServiceConfig_Validators" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ClaimOperations_Claims" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Refunds_ClaimOperations" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Claims_ClaimStatus" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Claims_ClaimTypes" />
+        <AssociationConnector Association="PgEntitiesModel.FK_Claims_DocumentTypes" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ConfigDV_WebSvcMethodParams" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ConfigDV_WebSvcMethods" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ConfigDetails_BckpWebSvcMethods" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ConfigDetails_MainWebSvcMethods" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ValidatorMessages_CustomMessages" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NpsServiceResponses_NpsServiceRequests" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NpsServiceResponseQueryTrxs_NpsServiceResponses" />
+        <AssociationConnector Association="PgEntitiesModel.FK_RefundsRecords_Refunds" />
+        <AssociationConnector Association="PgEntitiesModel.FK_SalePointServices_SalePoints" />
+        <AssociationConnector Association="PgEntitiesModel.FK_SpsServiceResponses_SpsServiceRequests" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentCommerceItems_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_PaymentValidatorComm_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionAdditionalInfo_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionResultInfo_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionStatus_Transactions" />
+        <AssociationConnector Association="PgEntitiesModel.FK_WebSvcMethodParams_WebSvcMethods" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NotificationConfig_StatusTemplate" />
+        <AssociationConnector Association="PgEntitiesModel.FK_NotificationLog_TicketLog" />
+        <AssociationConnector Association="PgEntitiesModel.FK_StatusTemplate_NotificationTemplate" />
+        <AssociationConnector Association="PgEntitiesModel.FK_StatusTemplate_StatusCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_ReportJobLog_CommerceItems" />
+        <AssociationConnector Association="PgEntitiesModel.FK_TransactionStatus_StatusCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_User_Pswd" />
+        <AssociationConnector Association="PgEntitiesModel.FK_UserRol_User" />
+        <AssociationConnector Association="PgEntitiesModel.FK_UserService_User" />
+        <AssociationConnector Association="PgEntitiesModel.FK_CodeMapping_StatusCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_StatusCode_GenericCode" />
+        <AssociationConnector Association="PgEntitiesModel.FK_StatusMessage_StatusCode" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

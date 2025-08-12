@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PGPluginSPS.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PGPluginSPS_SpsServiceReference_Operation" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://192.168.135.35:8443/services/t/decidir.net/Operation.OperationHttpsSoap11Endpoint</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

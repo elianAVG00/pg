@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PGSyncro", "PGSyncro\PGSyncro.csproj", "{F905D14F-8994-410C-B992-3E821032727C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{A49A9854-B2D3-49EC-A089-C7504600B375}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F905D14F-8994-410C-B992-3E821032727C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F905D14F-8994-410C-B992-3E821032727C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F905D14F-8994-410C-B992-3E821032727C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F905D14F-8994-410C-B992-3E821032727C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A49A9854-B2D3-49EC-A089-C7504600B375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A49A9854-B2D3-49EC-A089-C7504600B375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A49A9854-B2D3-49EC-A089-C7504600B375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A49A9854-B2D3-49EC-A089-C7504600B375}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F249E8F-67CF-40C0-8AC3-427825F2207B}
+	EndGlobalSection
+EndGlobal

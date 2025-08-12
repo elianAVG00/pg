@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f0a35c17-c7e6-4916-a9f5-8b7de8514b5c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PGDataService.disco" MetadataType="Disco" ID="69e0f7cd-451f-4474-b5ab-ed493097a903" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?disco" />
+    <MetadataFile FileName="PGDataService.xsd" MetadataType="Schema" ID="4af9a036-dea6-4836-95c2-7c3feb910841" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PGDataService1.xsd" MetadataType="Schema" ID="ead0c183-f95b-4968-8bbf-9132e181cbc6" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PGDataService2.xsd" MetadataType="Schema" ID="7946f0a7-bd31-4e3f-8d03-c0f2a59dadc7" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PGDataService3.xsd" MetadataType="Schema" ID="d4917c4e-d6b0-46d4-aacc-f409ae9a90bc" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PGDataService.wsdl" MetadataType="Wsdl" ID="452018e8-37aa-4553-8da7-ba83e95e901c" SourceId="1" SourceUrl="https://dev-pgwebsvcs.provincianet.com.ar/PaymentGateway/PGDataAccess/PGDataService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

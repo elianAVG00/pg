@@ -1,0 +1,71 @@
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using PGMainService.Areas.HelpPage.Models
+@model Collection<ApiDescription>
+
+@{
+    ViewBag.Title = "";
+
+    // Group APIs by controller
+    ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
+}
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+
+<header class="help-page">
+    <div class="content-wrapper">
+        <table style="width: 100%"><tr><td>
+                                           <h1>Payment Gateway API - @ViewBag.ActualVersion </h1><h2>Página de ayuda para desarrolladores</h2>
+                                       </td><td style=" text-align: right;">
+                                                <img src="~/Areas/HelpPage/Content/imgs/pnet_logo.png" />
+                                            </td></tr></table>
+
+
+
+    </div>
+</header>
+    <hr/>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h3 style="color:crimson">IMPORTANTE:</h3>
+            <p class="text-warning bg-warning">
+             <span class="glyphicon glyphicon-exclamation-sign text-warning" aria-hidden="true"></span> 
+                A partir del 21 de enero del 2015, la actualización a la versión 3.4 o superior es obligatoria. Las integraciones a versiones anteriores no continuarán funcionando.<br/>
+ 
+                 </p>
+                        <p class="text-warning bg-warning">
+             <span class="glyphicon glyphicon-exclamation-sign text-warning" aria-hidden="true"></span> 
+                A partir del 15 de marzo del 2016, la actualización a la versión 4.1 o superior es obligatoria por cuestiones de seguridad y compatibilidad.<br/>
+ 
+                 </p>
+
+                        <p class="text-danger bg-danger">
+             <span class="glyphicon glyphicon glyphicon-off text-danger" aria-hidden="true"></span> 
+                A partir del 1 de enero del 2016, se deja de brindar soporte a las versiones anteriores a 3.4.<br/> 
+ 
+                 </p>
+
+            <hr/>
+            <h3>Introducción</h3>
+            <p>
+                Payment Gateway API (@ViewBag.ActualVersion) está orientado para facilitar los medios de pago y anulaciones con tarjetas bancarias. 
+            </p>
+            <h3>Simulador</h3>
+            <p>
+                Para realizar una simulación de pago y/o utilizar servicios de prueba, deberá contar con un usuario y contraseña para acceder a la <a href="@ViewBag.WebAdmin" ><b>Web de Administración</b></a>.
+            </p>
+        </div>
+    </section>
+    <hr/>
+  <h2> Documentación en línea</h2> 
+        <hr/>
+    <section class="content-wrapper main-content clear-fix">
+        @foreach (var group in apiGroups)
+        {
+            @Html.DisplayFor(m => group, "ApiGroup")
+        }
+    </section>
+</div>

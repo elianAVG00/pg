@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:ns1="urn:Decidir.net" targetNamespace="urn:Decidir.net" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+      <xs:element name="DataServiceFault" type="xs:string" />
+      <xs:element name="REQUEST_STATUS" type="xs:string" />
+      <xs:element name="DATA_SERVICE_RESPONSE">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:any minOccurs="0" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:Decidir.net">
+      <xs:element name="Get">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDSITE" nillable="true" type="xs:string" />
+            <xs:element name="IDTRANSACTIONSIT" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Operations" type="ns1:Operations" />
+      <xs:complexType name="Operations">
+        <xs:choice>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Operation" type="ns1:Operation" />
+          <xs:element minOccurs="0" name="Error" type="ns1:Error" />
+        </xs:choice>
+      </xs:complexType>
+      <xs:complexType name="Error">
+        <xs:sequence>
+          <xs:element name="ERRCODE" type="xs:string" />
+          <xs:element name="ERRDESC" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Operation">
+        <xs:sequence>
+          <xs:element name="IDTRANSACCIONSITE" nillable="true" type="xs:string" />
+          <xs:element name="FECHA_ORIGINAL" nillable="true" type="xs:string" />
+          <xs:element name="MONTO" nillable="true" type="xs:string" />
+          <xs:element name="CUOTAS" nillable="true" type="xs:string" />
+          <xs:element name="NROTICKET" nillable="true" type="xs:string" />
+          <xs:element name="ESTADO_DESCRI" nillable="true" type="xs:string" />
+          <xs:element name="IDMOTIVO" nillable="true" type="xs:string" />
+          <xs:element name="MOTIVO_ADICIONAL" nillable="true" type="xs:string" />
+          <xs:element name="TITULAR" nillable="true" type="xs:string" />
+          <xs:element name="IDTIPODOC" nillable="true" type="xs:string" />
+          <xs:element name="NRODOC" nillable="true" type="xs:string" />
+          <xs:element name="TIPODOC" nillable="true" type="xs:string" />
+          <xs:element name="CODAUT" nillable="true" type="xs:string" />
+          <xs:element name="NROTARJ4" nillable="true" type="xs:string" />
+          <xs:element name="MOTIVO" nillable="true" type="xs:string" />
+          <xs:element name="VALDOM" nillable="true" type="xs:string" />
+          <xs:element name="MAIL" nillable="true" type="xs:string" />
+          <xs:element name="IDSITE" nillable="true" type="xs:string" />
+          <xs:element name="IDESTADO" nillable="true" type="xs:string" />
+          <xs:element name="IDMEDIOPAGO" nillable="true" type="xs:string" />
+          <xs:element name="MEDIOPAGO_DESCRI" nillable="true" type="xs:string" />
+          <xs:element name="SEXOTITULAR" nillable="true" type="xs:string" />
+          <xs:element name="CALLE" nillable="true" type="xs:string" />
+          <xs:element name="NROPUERTA" nillable="true" type="xs:string" />
+          <xs:element name="PARAMSITIO" nillable="true" type="xs:string" />
+          <xs:element name="FECHAVTOCUOTA1" nillable="true" type="xs:string" />
+          <xs:element name="IDOPERACIONMEDIOPAGO" nillable="true" type="xs:string" />
+          <xs:element name="TERMINAL" nillable="true" type="xs:string" />
+          <xs:element name="LOTE" nillable="true" type="xs:string" />
+          <xs:element name="RESULTADOCS" nillable="true" type="xs:string" />
+          <xs:element name="IDENTIFICADORCS" nillable="true" type="xs:string" />
+          <xs:element name="SUBTRANSACTIONS" type="ns1:SUBTRANSACTIONS" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SUBTRANSACTIONS">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SUBTRANSACTION" type="ns1:SUBTRANSACTION" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="SUBTRANSACTION">
+        <xs:sequence>
+          <xs:element name="IDTRANSACCIONSITE" nillable="true" type="xs:string" />
+          <xs:element name="MONTO" nillable="true" type="xs:string" />
+          <xs:element name="CUOTAS" nillable="true" type="xs:string" />
+          <xs:element name="NROTICKET" nillable="true" type="xs:string" />
+          <xs:element name="ESTADO_DESCRI" nillable="true" type="xs:string" />
+          <xs:element name="IDMOTIVO" nillable="true" type="xs:string" />
+          <xs:element name="MOTIVO_ADICIONAL" nillable="true" type="xs:string" />
+          <xs:element name="CODAUT" nillable="true" type="xs:string" />
+          <xs:element name="MOTIVO" nillable="true" type="xs:string" />
+          <xs:element name="IDSITE" nillable="true" type="xs:string" />
+          <xs:element name="IDESTADO" nillable="true" type="xs:string" />
+          <xs:element name="TERMINAL" nillable="true" type="xs:string" />
+          <xs:element name="LOTE" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetRequest">
+    <wsdl:part name="parameters" element="ns1:Get" />
+  </wsdl:message>
+  <wsdl:message name="GetResponse">
+    <wsdl:part name="parameters" element="ns1:Operations" />
+  </wsdl:message>
+  <wsdl:message name="DataServiceFault">
+    <wsdl:part name="parameters" element="ns0:DataServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="OperationPortType">
+    <wsdl:operation name="Get">
+      <wsdl:input wsaw:Action="urn:Get" message="ns1:GetRequest" />
+      <wsdl:output wsaw:Action="urn:GetResponse" message="ns1:GetResponse" />
+      <wsdl:fault wsaw:Action="urn:GetDataServiceFault" name="DataServiceFault" message="ns1:DataServiceFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OperationSoap11Binding" type="ns1:OperationPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="urn:Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataServiceFault">
+        <soap:fault use="literal" name="DataServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OperationSoap12Binding" type="ns1:OperationPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get">
+      <soap12:operation soapAction="urn:Get" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="DataServiceFault">
+        <soap12:fault use="literal" name="DataServiceFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OperationHttpBinding" type="ns1:OperationPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Get">
+      <http:operation location="Get" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Operation">
+    <wsdl:port name="OperationHttpsSoap11Endpoint" binding="ns1:OperationSoap11Binding">
+      <soap:address location="https://192.168.135.35:8443/services/t/decidir.net/Operation.OperationHttpsSoap11Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="OperationHttpSoap11Endpoint" binding="ns1:OperationSoap11Binding">
+      <soap:address location="http://192.168.135.35:8480/services/t/decidir.net/Operation.OperationHttpSoap11Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="OperationHttpsSoap12Endpoint" binding="ns1:OperationSoap12Binding">
+      <soap12:address location="https://192.168.135.35:8443/services/t/decidir.net/Operation.OperationHttpsSoap12Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="OperationHttpSoap12Endpoint" binding="ns1:OperationSoap12Binding">
+      <soap12:address location="http://192.168.135.35:8480/services/t/decidir.net/Operation.OperationHttpSoap12Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="OperationHttpEndpoint" binding="ns1:OperationHttpBinding">
+      <http:address location="http://192.168.135.35:8480/services/t/decidir.net/Operation.OperationHttpEndpoint" />
+    </wsdl:port>
+    <wsdl:port name="OperationHttpsEndpoint" binding="ns1:OperationHttpBinding">
+      <http:address location="https://192.168.135.35:8443/services/t/decidir.net/Operation.OperationHttpsEndpoint" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

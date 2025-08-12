@@ -1,0 +1,1488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PGMainService</name>
+    </assembly>
+    <members>
+        <member name="M:PGMainService.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,PGMainService.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>The <see cref="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/></returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:PGMainService.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PGMainService.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:PGMainService.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:PGMainService.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PGMainService.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:PGMainService.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,PGMainService.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,PGMainService.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(PGMainService.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:PGMainService.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The type.</returns>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},PGMainService.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Creates a new <see cref="T:PGMainService.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:PGMainService.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleKey.#ctor(PGMainService.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:PGMainService.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,PGMainService.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:PGMainService.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:PGMainService.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PGMainService.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PGMainService.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:PGMainService.Controllers.InformationController.Get">
+            <summary>
+            Devuelve la salud del servicio de Informativo.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.InformationController.GetAllCreditCards(System.String)">
+            <summary>
+            Devuelve todas las tarjetas disponibles para determinado comercio.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.InformationController.Post">
+            <summary>
+            Devuelve toda la información que recibe a través de POST
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.RedirectController.Get">
+            <summary>
+            Devuelve el estado de salud del servicio de Redirect.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.StatusController.Get">
+            <summary>
+            Devuelve estados de salud del servicio.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.TicketController.GetStatus">
+            <summary>
+            Devuelve la salud del servicio de Ticket
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.TransactionTerminalController.Get">
+            <summary>
+            Devuelve el estado de salud del servicio de Callback. También cierra respuesta.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.TransactionTerminalController.Get(System.String)">
+            <summary>
+            Obtiene operationCode para devolver estado de la transacción (solo para SPS).
+            </summary>
+        </member>
+        <member name="M:PGMainService.Controllers.TransactionTerminalController.Post(PGMainService.Models.TransactionTerminalModel)">
+            <summary>
+            POST Method to Callback for NPS.
+            </summary>
+        </member>
+        <member name="T:PGMainService.Manager.FilterIPAttribute">
+            <summary>
+            Filter by IP address (ASP.NET Web API version)
+            Originally from http://stackoverflow.com/a/4605086/91551
+            </summary>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.AllowedSingleIPs">
+            <summary>
+            Comma seperated string of allowable IPs. Example "10.2.5.41,192.168.0.22"
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.AllowedMaskedIPs">
+            <summary>
+            Comma seperated string of allowable IPs with masks. Example "10.2.0.0;255.255.0.0,10.3.0.0;255.255.0.0"
+            </summary>
+            <value>The masked I ps.</value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.ConfigurationKeyAllowedSingleIPs">
+            <summary>
+            Gets or sets the configuration key for allowed single IPs
+            </summary>
+            <value>The configuration key single I ps.</value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.ConfigurationKeyAllowedMaskedIPs">
+            <summary>
+            Gets or sets the configuration key allowed mmasked IPs
+            </summary>
+            <value>The configuration key masked I ps.</value>
+        </member>
+        <member name="F:PGMainService.Manager.FilterIPAttribute.allowedIPListToCheck">
+            <summary>
+            List of allowed IPs
+            </summary>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.DeniedSingleIPs">
+            <summary>
+            Comma seperated string of denied IPs. Example "10.2.5.41,192.168.0.22"
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.DeniedMaskedIPs">
+            <summary>
+            Comma seperated string of denied IPs with masks. Example "10.2.0.0;255.255.0.0,10.3.0.0;255.255.0.0"
+            </summary>
+            <value>The masked I ps.</value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.ConfigurationKeyDeniedSingleIPs">
+            <summary>
+            Gets or sets the configuration key for denied single IPs
+            </summary>
+            <value>The configuration key single I ps.</value>
+        </member>
+        <member name="P:PGMainService.Manager.FilterIPAttribute.ConfigurationKeyDeniedMaskedIPs">
+            <summary>
+            Gets or sets the configuration key for denied masked IPs
+            </summary>
+            <value>The configuration key masked I ps.</value>
+        </member>
+        <member name="F:PGMainService.Manager.FilterIPAttribute.deniedIPListToCheck">
+            <summary>
+            List of denied IPs
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.FilterIPAttribute.CheckAllowedIPs(System.String)">
+            <summary>
+            Checks the allowed IPs.
+            </summary>
+            <param name="userIpAddress">The user ip address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PGMainService.Manager.FilterIPAttribute.CheckDeniedIPs(System.String)">
+            <summary>
+            Checks the denied IPs.
+            </summary>
+            <param name="userIpAddress">The user ip address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:PGMainService.Manager.FilterIPAttribute.SplitAndAddSingleIPs(System.String,PGMainService.Manager.IPList)">
+            <summary>
+            Splits the incoming ip string of the format "IP,IP" example "10.2.0.0,10.3.0.0" and adds the result to the IPList
+            </summary>
+            <param name="ips">The ips.</param>
+            <param name="list">The list.</param>
+        </member>
+        <member name="M:PGMainService.Manager.FilterIPAttribute.SplitAndAddMaskedIPs(System.String,PGMainService.Manager.IPList)">
+            <summary>
+            Splits the incoming ip string of the format "IP;MASK,IP;MASK" example "10.2.0.0;255.255.0.0,10.3.0.0;255.255.0.0" and adds the result to the IPList
+            </summary>
+            <param name="ips">The ips.</param>
+            <param name="list">The list.</param>
+        </member>
+        <member name="T:PGMainService.Manager.IPArrayList">
+            <summary>
+            Internal class for storing a range of IP numbers with the same IP mask
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPArrayList.#ctor(System.UInt32)">
+            <summary>
+            Constructor that sets the mask for the list
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPArrayList.Add(System.UInt32)">
+            <summary>
+            Add a new IP numer (range) to the list
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPArrayList.Check(System.UInt32)">
+            <summary>
+            Checks if an IP number is within the ranges included by the list
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPArrayList.Clear">
+            <summary>
+            Clears the list
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPArrayList.ToString">
+            <summary>
+            The ToString is overriden to generate a list of the IP numbers
+            </summary>
+        </member>
+        <member name="P:PGMainService.Manager.IPArrayList.Mask">
+            <summary>
+            The IP mask for this list of IP numbers
+            </summary>
+        </member>
+        <member name="T:PGMainService.Manager.IPList">
+            <summary>
+            Summary description for Class1.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Add(System.String)">
+            <summary>
+            Add a single IP number to the list as a string, ex. 10.1.1.1
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Add(System.UInt32)">
+            <summary>
+            Add a single IP number to the list as a unsigned integer, ex. 0x0A010101
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Add(System.String,System.String)">
+            <summary>
+            Adds IP numbers using a mask for range where the mask specifies the number of
+            fixed bits, ex. 172.16.0.0 255.255.0.0 will add 172.16.0.0 - 172.16.255.255
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Add(System.UInt32,System.UInt32)">
+            <summary>
+            Adds IP numbers using a mask for range where the mask specifies the number of
+            fixed bits, ex. 0xAC1000 0xFFFF0000 will add 172.16.0.0 - 172.16.255.255
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Add(System.String,System.Int32)">
+            <summary>
+            Adds IP numbers using a mask for range where the mask specifies the number of
+            fixed bits, ex. 192.168.1.0/24 which will add 192.168.1.0 - 192.168.1.255
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.AddRange(System.String,System.String)">
+            <summary>
+            Adds IP numbers using a from and to IP number. The method checks the range and
+            splits it into normal ip/mask blocks.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.AddRange(System.UInt32,System.UInt32)">
+            <summary>
+            Adds IP numbers using a from and to IP number. The method checks the range and
+            splits it into normal ip/mask blocks.
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.CheckNumber(System.String)">
+            <summary>
+            Checks if an IP number is contained in the lists, ex. 10.0.0.1
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.CheckNumber(System.UInt32)">
+            <summary>
+            Checks if an IP number is contained in the lists, ex. 0x0A000001
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.Clear">
+            <summary>
+            Clears all lists of IP numbers
+            </summary>
+        </member>
+        <member name="M:PGMainService.Manager.IPList.ToString">
+            <summary>
+            Generates a list of all IP ranges in printable format
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ResponseGenericCode">
+            <summary>
+            Código de Tipo de respuesta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ResponseGenericMessage">
+            <summary>
+            Mensaje de Tipo de respuesta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ResponseCode">
+            <summary>
+            Código de respuesta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ResponseMessage">
+            <summary>
+            Mensaje de respuesta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ResponseExtended">
+            <summary>
+            Mensaje de respuesta extendido
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ElectronicPaymentCode">
+            <summary>
+            Código de pago electrónico
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.TransactionId">
+            <summary>
+            Identificador de la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.MetaData">
+            <summary>
+            MetaData de productos
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CallbackToPostModel.ReturnUrl">
+            <summary>
+            URL To Post
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.PaymentInputModel">
+            <summary>
+            Entrada de pago.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelToSearchByEPC.EPC">
+            <summary>
+            Electronic Payment Code
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelToSearchByEPC.merchantCode">
+            <summary>
+            Merchant Id
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaRePrintModel.Date">
+            <summary>
+            Fecha de compra (en formato "yyyy-MM-dd")
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaRePrintModel.ExternalId">
+            <summary>
+            External Id del Servicio
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaRePrintModel.CreditCard4LastDigits">
+            <summary>
+            Últimos 4 dígitos del número de la tarjeta de crédito
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaRePrintModel.AuthorizationCode">
+            <summary>
+            Código de Autorización
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.MerchantId">
+            <summary>
+            Identificador del comercio. Este dato es provisto al comienzo del proceso.
+            </summary>
+            <example>MLP</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.SearchFrom">
+            <summary>
+            Fecha de creación del reclamo, desde.
+            </summary>
+            <example>yyyyMMdd</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.SearchTo">
+            <summary>
+            Fecha de creación del reclamo, hasta.
+            </summary>
+            <example>yyyyMMdd</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.CommerceItemCode">
+            <summary>
+            Filtrar por un determinado CommerceItem Code (requiere obligatoriamente un TransactionId)
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.TransactionId">
+            <summary>
+            Filtrar por un determinado TransactionId
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelReportToSearch.AutomatedJobRunId">
+            <summary>
+            (NO REQUERIDO) - Solo para procesos automáticos.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelPaymentToSearch.MerchantId">
+            <summary>
+            Identificador del comercio. Este dato es provisto al comienzo del proceso.
+            </summary>
+            <example>MLP</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelPaymentToSearch.SearchFrom">
+            <summary>
+            Fecha de creación del reclamo, desde.
+            </summary>
+            <example>yyyyMMdd</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelPaymentToSearch.SearchTo">
+            <summary>
+            Fecha de creación del reclamo, hasta.
+            </summary>
+            <example>yyyyMMdd</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelForPaymentClaim.TransactionId">
+            <summary>
+            Identificador único de la transacción. Este dato es provisto en el ticket de pago.
+            </summary>
+            <example>123456789</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelForPaymentClaim.StatusCode">
+            <summary>
+            Código del estado del reclamo (Ver Información, Códigos de estado).
+            </summary>
+            <example>101 (reclamo abierto), 106 (Operación de anulación/devolución aprobada)</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelForPaymentClaim.PaymentClaimNumber">
+            <summary>
+            Identificador único del reclamo. Este dato es provisto en el ticket de creación de reclamo.
+            </summary>
+            <example>123456789</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelForPaymentClaim.Type">
+            <summary>
+            Tipo de reclamo (parcial o total)
+            </summary>
+            <example>1: Total ó 2: Parcial</example>
+        </member>
+        <member name="P:PGMainService.Models.CriteriaModelForPaymentClaim.ProductId">
+            <summary>
+            Identificador único de tarjeta de crédito de Provincia Net (Ver Información, Listado de Tarjetas).
+            </summary>
+            <example>1 (American Express), 4 (Mastercard), 8 (VISA)</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequestResult.ResponseGenericMessage">
+            <summary>
+            Código del tipo genérico de respuesta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequestResult.ClaimNumber">
+            <summary>
+            Identificador del reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequestResult.ResponseStatusCode">
+            <summary>
+            Código del estado actual del reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequestResult.ResponseStatusMessage">
+            <summary>
+            Mensaje del estado actual del reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequestResult.ResponseMessage">
+            <summary>
+            Respuesta
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.PaymentClaimRequest">
+            <summary>
+            Solicitud de reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequest.PaymentClaimNumber">
+            <summary>
+            Identificador único de reclamo.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimRequest.Observations">
+            <summary>
+            Observaciones de la solicitud.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimResponseModel.AnnulmentRequest">
+            <summary>
+            Id de la solicitud de respuesta
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.PaymentClaimInput">
+            <summary>
+            Commerce Item a anular
+            </summary>
+            <summary>
+            Entrada de reclamo.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.TransactionId">
+            <summary>
+            Identificación de la transacción. Este dato es provisto en el ticket de pago.
+            </summary>
+            <example>123456789</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.MerchantId">
+            <summary>
+            Identificación del comercio. Este dato es provisto al comienzo del proceso.
+            </summary>
+            <example>TiendaDeEjemplo</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.DocumentType">
+            <summary>
+            Tipo de documento del reclamante.
+            </summary>
+            <example>DNI, Pasaporte</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.DocumentNumber">
+            <summary>
+            Numero de documento del reclamante.
+            </summary>
+            <example>12321456</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ListOfCommerceItemCodeToRefund">
+            <summary>
+            Conjunto de Commerce Items a anular
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ClaimerName">
+            <summary>
+            Nombre del reclamante.
+            </summary>
+            <example>Alicia</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ClaimerLastName">
+            <summary>
+            Apellido del reclamante.
+            </summary>
+            <example>Bardelli</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ClaimerMail">
+            <summary>
+            Dirección de correo electrónico del reclamante (se enviará el comprobante al mismo).
+            </summary>
+            <example>consumidor@cliente.com</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ClaimerCellphone">
+            <summary>
+            Número de teléfono celular del reclamante.
+            </summary>
+            <example>0221 154896556</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.ClaimerPhone">
+            <summary>
+            Número de teléfono fijo del reclamante.
+            </summary>
+            <example>0221 4896556</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentClaimInput.Observation">
+            <summary>
+            Consideraciones que deban tenerse en cuenta al momento de registrar el reclamo.
+            </summary>
+            <example>Se registró un pago por error del operador</example>
+        </member>
+        <member name="P:PGMainService.Models.CreditCard.Id">
+            <summary>
+            Identificador de tarjeta crediticia
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CreditCard.Name">
+            <summary>
+            Nombre de la tarjeta crediticia
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CreditCard.Type">
+            <summary>
+            Tipo de la tarjeta crediticia
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.PaymentInput">
+            <summary>
+            Entrada de pago.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.WithTransactionNumber">
+            <summary>
+            Opcional. Boolean. Flag para obtener el número de la transacción en la respuesta de la petición. ATENCIÓN: La respuesta posee un formato nuevo.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.MerchantId">
+            <summary>
+            Identificación del comercio. Este dato es provisto al comienzo del proceso.
+            </summary>
+            <example>TiendaDeEjemplo</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.ElectronicPaymentCode">
+            <summary>
+            Código del Pago Electrónico (EPC) que identifica en forma unívoca la petición o intención de pago.
+            </summary>
+            <example>7000142114464886</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.CurrencyCode">
+            <summary>
+            Código internacional ISO 4217 de la moneda de pago
+            </summary>
+            <example>ARS</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.Amount">
+            <summary>
+            Importe total del pago. Máximo 10 dígitos en la parte entera y 2 dígitos fijos para la parte fraccionaria; separados por coma.
+            </summary>
+            <example>123,00 ó 123,45</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.ProductId">
+            <summary>
+            Identificador único de tarjeta de crédito de Provincia Net (Ver Información, Listado de Tarjetas).
+            </summary>
+            <example>1 (American Express), 4 (Mastercard), 8 (VISA)</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.Payments">
+            <summary>
+            Cantidad de cuotas a realizarse en el pago.
+            </summary>
+            <example>1 ó 4 ó 12 (etc.)</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.MailAddress">
+            <summary>
+            Dirección de correo electrónico del usuario final (se enviará el comprobante al mismo).
+            </summary>
+            <example>consumidor@cliente.com</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.CallbackUrl">
+            <summary>
+            Dirección de retorno para control de aplicación. Una vez concluida la operación se redireccionará a través de un POST los resultados de la transacción a este URL especificado.
+            </summary>
+            <example>http://aplicacion/procesarResultado</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.ValidateEPCreturnUrl">
+            <summary>
+            Dirección URL a donde se volverá automáticamente si el ElectronicPaymentCode está repetido.
+            Si es vacío o nulo, no se valida el Electronic Payment Code.
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.BarCode">
+            <summary>
+            Código de barras de la factura, sticker o transacción, hasta 60 dígitos.
+            </summary>
+            <example>83576108935698</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.Channel">
+            <summary>
+            Especifica el canal para considerar opciones de inferfaz responsive. Por defecto, Web.
+             </summary>
+            <example>web o mobile</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.Metadata">
+            <summary>
+            OBSOLETO - Representación string de un JSON que almacena cualquier información. La información de este campo es devuelvo por el callback.
+            </summary>
+            <example>{"CommerceItems": [{"Code": "TEST1","Description": "Nombre del producto que ha pagado con un largo 001","Price": "122.56"},{"Code": "TEST2","Description": "Nombre del producto que ha pagado con un largo 002","Price": "1233.56"}]}</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.CommerceItems">
+            <summary>
+            Representación string de un JSON que almacena cualquier información. La información de este campo es devuelvo por el callback.
+            </summary>
+            <example>[{"Code":"Code1","Description":"Compra de producto 10","Amount":"30"},{"Code":"Code2","Description":"Compra de servicio 63","Amount":"20"}]</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.AppVersion">
+            <summary>
+            Si desea dejar constancia de una versión específica de Payment Gateway, especifíquela aquí. Posibles: 3500, 3740, 4100
+            </summary>
+            <example>4100</example>
+        </member>
+        <member name="P:PGMainService.Models.PaymentInput.IsSimulation">
+            <summary>
+            Si desea marcar la transacción como simulada, especifique 1
+            </summary>
+            <example>1 ó 0</example>
+        </member>
+        <member name="T:PGMainService.Models.Customer">
+            <summary>
+            Detalles del tarjetahabiente
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Customer.AuthorizationCode">
+            <summary>
+            Código de autorización
+            </summary>
+            <example>012345</example>
+        </member>
+        <member name="P:PGMainService.Models.Customer.CardNumberMasked">
+            <summary>
+            Número de tarjeta enmascarado
+            </summary>
+            <example>1234XXXXXXXX5678</example>
+        </member>
+        <member name="P:PGMainService.Models.Customer.CustomerMail">
+            <summary>
+            Correo electrónico del tarjetahabiente
+            </summary>
+            <example>tarjetahabiente@dominio.com</example>
+        </member>
+        <member name="P:PGMainService.Models.Customer.CustomerDocType">
+            <summary>
+            Tipo de documento del tarjetahabiente
+            </summary>
+            <example>DNI</example>
+        </member>
+        <member name="P:PGMainService.Models.Customer.CustomerDocNumber">
+            <summary>
+            Número de documento del tarjetahabiente
+            </summary>
+            <example>12345678</example>
+        </member>
+        <member name="T:PGMainService.Models.Service">
+            <summary>
+            Detalles del servicio cliente
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Service.ClientLegalName">
+            <summary>
+            Nombre legal del servicio
+            </summary>
+            <example>CLIENTE</example>
+        </member>
+        <member name="P:PGMainService.Models.Service.ServiceShortCode">
+            <summary>
+            Código corto del servicio
+            </summary>
+            <example>CLT</example>
+        </member>
+        <member name="P:PGMainService.Models.Service.ServiceName">
+            <summary>
+            Nombre detallado del servicio
+            </summary>
+            <example>Cliente de pago</example>
+        </member>
+        <member name="P:PGMainService.Models.Service.MerchantId">
+            <summary>
+            Código de identificación del cliente
+            </summary>
+            <example>CLIENTE_TEST</example>
+        </member>
+        <member name="T:PGMainService.Models.Payment">
+            <summary>
+            Detalles del pago
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Payment.CurrencyCode">
+            <summary>
+            Código de moneda
+            </summary>
+            <example>ARS</example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.Amount">
+            <summary>
+            Monto de la transacción
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.Payments">
+            <summary>
+            Cantidad de pagos (cuotas)
+            </summary>
+            <example>12</example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.PayDateTime">
+            <summary>
+            Timestamp de entrada de la transacción
+            </summary>
+            <example></example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.ProductCode">
+            <summary>
+            Código de producto
+            </summary>
+            <example>8</example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.ProductName">
+            <summary>
+            Nombre del producto
+            </summary>
+            <example>VISA</example>
+        </member>
+        <member name="P:PGMainService.Models.Payment.BarCode">
+            <summary>
+            Código de barras de la transacción
+            </summary>
+            <example>ABC1234567890</example>
+        </member>
+        <member name="T:PGMainService.Models.Claims">
+            <summary>
+            Detalle de reclamos
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claims.ClaimNumber">
+            <summary>
+            Número de reclamo
+            </summary>
+            <example>123</example>
+        </member>
+        <member name="P:PGMainService.Models.Claims.ClaimResultCode">
+            <summary>
+            Código de resultado del reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claims.ClaimResultMessage">
+            <summary>
+            Mensaje detallado del resultado del reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claims.CommerceItemsRefunded">
+            <summary>
+            Items procesados en el reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claims.Claimer">
+            <summary>
+            Reclamante
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.Claimer">
+            <summary>
+            Información del reclamante
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.Cellphone">
+            <summary>
+            Número de móvil
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.DocNumber">
+            <summary>
+            Número de documento
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.DocShortName">
+            <summary>
+            Tipo de documento
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.Email">
+            <summary>
+            Dirección de correo electrónico
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.LastName">
+            <summary>
+            Apellido/s
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.FirstName">
+            <summary>
+            Nombre/s
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.Claimer.Phone">
+            <summary>
+            Teléfono fijo
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.CommerceItems">
+            <summary>
+            Detalle del item procesado por reclamo
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CommerceItems.Description">
+            <summary>
+            Descripción del item
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CommerceItems.Code">
+            <summary>
+            Código del item
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CommerceItems.Amount">
+            <summary>
+            Monto del item
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CommerceItems.OriginalCode">
+            <summary>
+            Código original con el que fue realizada la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.CommerceItems.State">
+            <summary>
+            Estado del item
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.TransactionResult">
+            <summary>
+            Datos de resultados de la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.TransactionId">
+            <summary>
+            Número de transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.ChannelCode">
+            <summary>
+            Código del canal
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.ElectronicPaymentCode">
+            <summary>
+            EPC - Electronic Payment Code
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.ResultCode">
+            <summary>
+            Código del resultado
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.ResultMessage">
+            <summary>
+            Mensaje detallado del resultado
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.GenericCode">
+            <summary>
+            Código genérico del resultado
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.GenericMessage">
+            <summary>
+            Mensaje detallado del código genérico del resultado
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.Payment">
+            <summary>
+            Datos del pago
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.Service">
+            <summary>
+            Datos del servicio
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.Customer">
+            <summary>
+            Datos del tarjetahabiente
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.CommerceItems">
+            <summary>
+            Listado de items procesados en el pago
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionResult.Claims">
+            <summary>
+            Listado de reclamos procesados en la transacción
+            </summary>
+        </member>
+        <member name="T:PGMainService.Models.TransactionWithRefunds">
+            <summary>
+            Transacciones con reembolsos
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.TransactionId">
+            <summary>
+            Código de la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.TransactionDate">
+            <summary>
+            Timestamp de la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.EPC">
+            <summary>
+            Electronic Payment Code
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.TransactionCurrencyCode">
+            <summary>
+            Código de moneda de la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.TransactionAmount">
+            <summary>
+            Monto de la transacción
+            </summary> 
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.ClientCode">
+            <summary>
+            Código de cliente
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.Service">
+            <summary>
+            Servicio
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.RefundDate">
+            <summary>
+            Fecha de reembolso
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.RefundCurrencyCode">
+            <summary>
+            Código de moneda de reembolso
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.RefundAmount">
+            <summary>
+            Monto del reembolso
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.ProductName">
+            <summary>
+            Nombre del producto
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.CardMask">
+            <summary>
+            Máscara del número de tarjeta
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.AuthorizationCode">
+            <summary>
+            Código de autorización
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.TransactionWithRefunds.CommerceItems">
+            <summary>
+            Listado de items relacionados a la transacción
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.UpdateCommerceItemCodeModel.OldCode">
+            <summary>
+            Código antiguo de identificación único del elemento (condición)
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.UpdateCommerceItemCodeModel.NewCode">
+            <summary>
+            Código nuevo de identificación único del elemento (seteo)
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.UpdateCommerceItemCodeModel.merchantCode">
+            <summary>
+            Código de identificación del servicio
+            </summary>
+        </member>
+        <member name="P:PGMainService.Models.UpdateCommerceItemCodeModel.TransactionId">
+            <summary>
+            Identificador de la transacción
+            </summary>
+        </member>
+    </members>
+</doc>

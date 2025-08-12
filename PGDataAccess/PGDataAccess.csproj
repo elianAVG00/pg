@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props" Condition="Exists('..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FBA5D2CE-A4B8-4C8F-BB89-A4CF0141DEED}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PGDataAccess</RootNamespace>
+    <AssemblyName>PGDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>60458</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <BuildPackage>true</BuildPackage>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>3</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PGDataService.svc" />
+    <Content Include="NLog.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <EntityDeploy Include="EF\PGDataEF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PGDataEF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EF\PGDataEF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDataEF.edmx</DependentUpon>
+      <LastGenOutput>PGDataEF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EF\PGDataEF.edmx.diagram">
+      <DependentUpon>PGDataEF.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\PGDataEF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PGDataEF.edmx</DependentUpon>
+      <LastGenOutput>PGDataEF.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\local.pubxml" />
+    <None Include="Properties\PublishProfiles\PGDev.pubxml" />
+    <None Include="Properties\PublishProfiles\PGTest.pubxml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EF\AnnulmentJobLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AnnulmentRequest.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AnnulmentResultInfo.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AnnulmentValidatorComm.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\AppConfig.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Banks.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CarpendiProccess.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CarpendiStats.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Channels.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Claimer.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ClaimOperations.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Claims.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ClaimStatus.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ClaimTypes.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Clients.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CodeMapping.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CommerceItemClaim.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CommerceItems.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ConfigurationDefaultValues.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ConfigurationDetails.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Configurations.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Configurations_BK_06_06.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Configurations_BK_26_06.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Configurations_BK_27_06.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Countries.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Currencies.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Currency.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CustomMessages.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DocType.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\DocumentTypes.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ExternalApp.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GenericCode.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GetInformationForSPSBatchValidation_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GetPrismaCodes.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\GetTransactionsToSync_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\JobRunLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Language.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Languages.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Logs.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Module.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ModuleCode.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorFilesReportProcess.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorFilesReportRecords.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorPaywayBackOfficeTransactions.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorSPSBatchProcess.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorSPSBatchProcessFiles.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorSPSBatchProcessTransactions.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorSyncroProcess.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\MonitorSyncroProcessRecords.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NotificationConfig.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NotificationLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NotificationTemplate.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NpsServiceRequests.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NpsServiceResponseQueryTrxs.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\NpsServiceResponses.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paReporting_Pagos_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_DecidirTotalesARBA_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_GetCantidadByServicio_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_PaymentAmount_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_PaymentCardMask_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_PaymentTransactionID_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\paSSRS_SpsDecidirServiceResponse_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PaymentClaim.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PaymentClaimStatus.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PaymentValidatorComm.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\pa_ReporteTraPorFecha_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PGDataEF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataEF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PGDataEF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\PGDataEF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PGDataEF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ProductCarpendi.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ProductCentralizer.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Products.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ProductSPSBatch.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ProductsValidators.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Pswd.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Refunds.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\RefundsRecords.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\RenditionReportOnline_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ReporteMensualValidadores_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ReporteOperacionesSinRendirDesdeDECIDIR_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ReportJobLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Rol.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SalePoints.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SalePointServices.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ServiceChannels.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ServiceProducts.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Services.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ServicesConfig.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SpsBatch.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SpsBatchTemporalValidation.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SPSBatch_GetMissingExpectedFiles_Result.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SpsServiceRequests.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\SpsServiceResponses.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\StatusCode.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\StatusMessage.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\StatusSvcLogs.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\StatusTemplate.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TicketLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TransactionAdditionalInfo.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TransactionResultInfo.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Transactions.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TransactionStatus.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\TransactionTicket.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\User.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\UserActivity.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\UserRol.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\UserService.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ValidatorMessages.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Validators.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ValidatorServiceConfig.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\VersionLog.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Versions.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vwGetPaymentTicketInfo.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vwNpsServiceTransactions.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\vwNpsServiceTransactionsAAA.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\WebSvcMethodParams.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\WebSvcMethods.cs">
+      <DependentUpon>PGDataEF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="IPGDataService.cs" />
+    <Compile Include="Mappers\Mapper.cs" />
+    <Compile Include="Models\AnnulmentJobPaymentClaimModel.cs" />
+    <Compile Include="Models\AnnulmentRequestModel.cs" />
+    <Compile Include="Models\AnnulmentResultInfoModel.cs" />
+    <Compile Include="Models\AnnulmentValidatorCommModel.cs" />
+    <Compile Include="Models\AppConfigModel.cs" />
+    <Compile Include="Models\AppInfo.cs" />
+    <Compile Include="Models\CallbackModel.cs" />
+    <Compile Include="Models\ChannelModel.cs" />
+    <Compile Include="Models\ChannelStatusTemplateModel.cs" />
+    <Compile Include="Models\ClaimerModel.cs" />
+    <Compile Include="Models\ClientModel.cs" />
+    <Compile Include="Models\CommerceItemClaimModel.cs" />
+    <Compile Include="Models\CommerceItemModel.cs" />
+    <Compile Include="Models\ConfigurationModel.cs" />
+    <Compile Include="Models\HTTPResponse_Model.cs" />
+    <Compile Include="Models\LogModel.cs" />
+    <Compile Include="Models\ReporteCentralizadorOrRefundionRefundModel.cs" />
+    <Compile Include="Models\JobLogModel.cs" />
+    <Compile Include="Models\MailerModel.cs" />
+    <Compile Include="Models\ReporteRenditionModel.cs" />
+    <Compile Include="Models\FilterCriteriaModel.cs" />
+    <Compile Include="Models\CurrencyModel.cs" />
+    <Compile Include="Models\DocTypeModel.cs" />
+    <Compile Include="Models\GenericCodeModel.cs" />
+    <Compile Include="Models\LanguageModel.cs" />
+    <Compile Include="Models\LogTypeModel.cs" />
+    <Compile Include="Models\ModuleModel.cs" />
+    <Compile Include="Models\NotificationConfigModel.cs" />
+    <Compile Include="Models\NotificationLogModel.cs" />
+    <Compile Include="Models\NotificationTemplateModel.cs" />
+    <Compile Include="Models\NPSClaimTransactionRelationModel.cs" />
+    <Compile Include="Models\PaymentClaimModel.cs" />
+    <Compile Include="Models\PaymentClaimStatusModel.cs" />
+    <Compile Include="Models\PaymentValidatorCommModel.cs" />
+    <Compile Include="Models\ProductModel.cs" />
+    <Compile Include="Models\ReporteCentralizadorModel.cs" />
+    <Compile Include="Models\ReporteConciliacionModel.cs" />
+    <Compile Include="Models\RePrintModel.cs" />
+    <Compile Include="Models\RolModel.cs" />
+    <Compile Include="Models\ServiceConfigModel.cs" />
+    <Compile Include="Models\ServiceModel.cs" />
+    <Compile Include="Models\StatusCodeModel.cs" />
+    <Compile Include="Models\StatusCodeStatusMessageModel.cs" />
+    <Compile Include="Models\StatusCompletedInfo.cs" />
+    <Compile Include="Models\StatusMessageModel.cs" />
+    <Compile Include="Models\StatusResponseMessageModel.cs" />
+    <Compile Include="Models\StatusTicketModel.cs" />
+    <Compile Include="Models\TicketDetailsModel.cs" />
+    <Compile Include="Models\TicketLogModel.cs" />
+    <Compile Include="Models\TicketModel.cs" />
+    <Compile Include="Models\TransactionCompletedInfo.cs" />
+    <Compile Include="Models\TransactionModel.cs" />
+    <Compile Include="Models\TransactionResultInfoModel.cs" />
+    <Compile Include="Models\TransactionsWithRefundsModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserServiceModel.cs" />
+    <Compile Include="Models\ValidatorModel.cs" />
+    <Compile Include="Models\ValidatorServiceConfigModel.cs" />
+    <Compile Include="Models\ValidatorsHashKeyModel.cs" />
+    <Compile Include="PGDataService.svc.cs">
+      <DependentUpon>PGDataService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CommonRepository.cs" />
+    <Compile Include="Repository\AppConfigRepository.cs" />
+    <Compile Include="Repository\ConfigurationsRepository.cs" />
+    <Compile Include="Repository\JobRepository.cs" />
+    <Compile Include="Repository\LogRepository.cs" />
+    <Compile Include="Repository\NotificationRepository.cs" />
+    <Compile Include="Repository\PaymentClaimRepository.cs" />
+    <Compile Include="Repository\PaymentRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
+    <Compile Include="Repository\StatusRepository.cs" />
+    <Compile Include="Repository\TicketRepository.cs" />
+    <Compile Include="Repository\SecurityRepository.cs" />
+    <Compile Include="Services\MailerService.cs" />
+    <Compile Include="Tools\CustomTool.cs" />
+    <Compile Include="Tools\LogTool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PGTest|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PGStaging|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PGProd|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PGDev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'PGUnitTest|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- ORIGINAL -->
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <!-- <Import Condition="false" Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" /> -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v14.0\WebApplications\Microsoft.WebApplication.targets" Condition="true" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>60458</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44332/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props'))" />
+    <Error Condition="!Exists('..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\build\MSBuild.Microsoft.VisualStudio.Web.targets.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

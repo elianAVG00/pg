@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fefe2ea47f004653b5557475d1290eab" Name="Diagram1">
+        <EntityTypeShape EntityType="PaymentGatewayModel.PaymentClaim" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.AppConfig" Width="1.5" PointX="13.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Configurations" Width="1.5" PointX="13.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Language" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Module" Width="1.5" PointX="3.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.ModuleCode" Width="1.5" PointX="6" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Products" Width="1.5" PointX="11.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Services" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.ServicesConfig" Width="1.5" PointX="10.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.VersionLog" Width="1.5" PointX="15.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.NotificationConfig" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.NotificationLog" Width="1.5" PointX="9" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.NotificationTemplate" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.StatusTemplate" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.TicketLog" Width="1.5" PointX="6.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.TransactionTicket" Width="1.5" PointX="13.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.TransactionAdditionalInfo" Width="1.5" PointX="16.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.TransactionResultInfo" Width="1.5" PointX="15.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.TransactionStatus" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Logs" Width="1.5" PointX="0.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Pswd" Width="1.5" PointX="9" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.User" Width="1.5" PointX="11.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.UserService" Width="1.5" PointX="13.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.CodeMapping" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.GenericCode" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.StatusCode" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.StatusMessage" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_Configurations_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_Configurations_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_StatusMessage_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_ModuleCode_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_NotificationLog_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_CodeMapping_ModuleCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_NotificationConfig_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_ServicesConfig_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_UserService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_NotificationConfig_StatusTemplate" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_NotificationLog_TicketLog" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_StatusTemplate_NotificationTemplate" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_StatusTemplate_StatusCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionStatus_StatusCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_User_Pswd" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_UserService_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_CodeMapping_StatusCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_StatusCode_GenericCode" ManuallyRouted="false" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_StatusMessage_StatusCode" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Currency" Width="1.5" PointX="7.5" PointY="0.75" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_PaymentClaim_Currency" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Currencies" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.Transactions" Width="1.5" PointX="0.75" PointY="9.125" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_PaymentClaim_Transactions" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionAdditionalInfo_Transactions" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionResultInfo_Transactions" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_TransactionStatus_Transactions" />
+        <EntityTypeShape EntityType="PaymentGatewayModel.ProductsValidators" Width="1.5" PointX="13.5" PointY="22" />
+        <AssociationConnector Association="PaymentGatewayModel.FK_ProductsValidators_Products" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
