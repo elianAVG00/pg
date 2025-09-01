@@ -1562,8 +1562,7 @@ namespace PGMainService.PGDataAccess {
     [System.Runtime.Serialization.DataContractAttribute(Name="TransactionModel", Namespace="http://schemas.datacontract.org/2004/07/PGDataAccess.Models")]
     [System.SerializableAttribute()]
     public partial class TransactionModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        private bool? IsEPCValidatedField;
-        [OptionalField]
+        
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
@@ -2264,19 +2263,7 @@ namespace PGMainService.PGDataAccess {
                 }
             }
         }
-
-        public bool? IsEPCValidated
-        {
-            get => this.IsEPCValidatedField;
-            set
-            {
-                if (this.IsEPCValidatedField.Equals((object)value))
-                    return;
-                this.IsEPCValidatedField = value;
-                this.RaisePropertyChanged(nameof(IsEPCValidated));
-            }
-        }
-
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {

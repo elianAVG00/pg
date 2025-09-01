@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace PGSyncro.EFData;
+
+public partial class Language1
+{
+    public int Id { get; set; }
+
+    public string Iso639 { get; set; } = null!;
+
+    public string Iso3166 { get; set; } = null!;
+
+    public string Description { get; set; } = null!;
+
+    public string Nps { get; set; } = null!;
+
+    public bool IsActive { get; set; }
+
+    public string CreatedBy { get; set; } = null!;
+
+    public DateTime CreatedOn { get; set; }
+
+    public string? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+
+    public string Hsr { get; set; } = null!;
+
+    public string Sps { get; set; } = null!;
+}

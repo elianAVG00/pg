@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace PGSyncro.EFData;
+
+public partial class ClaimType
+{
+    public int Id { get; set; }
+
+    public string Description { get; set; } = null!;
+
+    public bool IsActive { get; set; }
+
+    public string CreatedBy { get; set; } = null!;
+
+    public DateTime CreatedOn { get; set; }
+
+    public string? ModifiedBy { get; set; }
+
+    public DateTime? ModifiedOn { get; set; }
+
+    public virtual ICollection<Claim> Claims { get; set; } = new List<Claim>();
+}

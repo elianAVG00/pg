@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PGSyncro": {
+      "commandName": "Project",
+      "console": "externalTerminal"
+      }
+    }
+  }
+}

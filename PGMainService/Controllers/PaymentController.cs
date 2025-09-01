@@ -387,7 +387,7 @@ namespace PGMainService.Controllers
                         transactionToSave.CustomerMail = paymentInput.MailAddress;
                         transactionToSave.BarCode = paymentInput.BarCode;
                         transactionToSave.UniqueCode = uniqueCode;
-                        transactionToSave.IsEPCValidated = isEPCValidationRequired;
+                        //transactionToSave.IsEPCValidated = isEPCValidationRequired;
                         transactionToSave.EPCValidateURL = urlToValidateEPC;
                         transactionToSave.IsCommerceItemValidated = finalIsCommerceItemValidated;
 
